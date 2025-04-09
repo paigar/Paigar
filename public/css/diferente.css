@@ -5,6 +5,7 @@
 		var(--clr-fondo-100)
 	);
 	isolation: isolate;
+	--psize: clamp(1.4rem, 5vw - 1rem, 3rem);
 }
 #diferente .mensaje {
 	border-top: 1px solid #333;
@@ -37,7 +38,7 @@
 	}
 }
 #diferente .mensaje p {
-	font-size: clamp(1.4rem, 5vw - 1rem, 3rem);
+	font-size: var(--psize);
 	line-height: 1.2em;
 	--anchop: min(100vw - 2rem, 80rem);
 	width: var(--anchop);
@@ -75,8 +76,8 @@
 }
 #diferente .bloque h2 {
 	position: sticky;
-	top: 3.2em;
-	font-size: 1.25em;
+	top: calc(2.2 * var(--psize));
+	font-size: max(1.2rem, 0.66 * var(--psize));
 	font-weight: 200;
 	margin-bottom: 1em;
 	line-height: 1.2em;
