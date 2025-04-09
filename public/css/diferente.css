@@ -37,7 +37,7 @@
 	}
 }
 #diferente .mensaje p {
-	font-size: 1.8em;
+	font-size: clamp(1.4rem, 5vw - 1rem, 3rem);
 	line-height: 1.2em;
 	--anchop: min(100vw - 2rem, 80rem);
 	width: var(--anchop);
