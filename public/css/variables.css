@@ -1,0 +1,7 @@
+/* Variables */
+:root {
+	--clr-fondo-100: #fff;
+	--clr-fondo-400: #f0f3f5;
+	--clr-fondo-400-trans: rgb(240, 243, 245, 0.9);
+	--clr-fondo-600: #a4aeb6;
+}

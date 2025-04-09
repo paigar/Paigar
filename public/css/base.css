@@ -1,0 +1,19 @@
+body {
+	font-family: "THICCCBOI", sans-serif;
+	font-weight: 400;
+	font-size: clamp(1.1rem, 1vw + 1vh, 1.5rem);
+	background-color: var(--clr-fondo-400);
+	overflow-x: hidden;
+	--alturaFijo: 3rem;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "THICCCBOI", sans-serif;
+	font-weight: 700;
+}
+.seccion {
+	position: relative;
+	min-height: 100vh;
+}

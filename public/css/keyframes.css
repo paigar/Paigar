@@ -1,0 +1,196 @@
+@keyframes rotar {
+	from {
+		transform: rotate(var(--rotacioninicial, 0deg));
+	}
+	to {
+		transform: rotate(var(--rotacionfinal, 0deg));
+	}
+}
+
+@keyframes crecerlado {
+	0% {
+		transform: scaleX(var(--xinicial, 0));
+	}
+	100% {
+		transform: scaleX(var(--xfinal, 0));
+	}
+}
+
+@keyframes decrecer {
+	0% {
+		transform: scale(100);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes blur {
+	0% {
+		filter: blur(var(--blurinicio));
+		transform: scale(0);
+	}
+	100% {
+		filter: blur(var(--blurfin));
+		transform: scale(1);
+	}
+}
+
+@keyframes fundido {
+	0% {
+		opacity: var(--fundidoinicial);
+	}
+	100% {
+		opacity: var(--fundidofinal);
+	}
+}
+
+@keyframes sat5 {
+	0%,
+	2%,
+	20%,
+	100% {
+		width: var(--diametro);
+	}
+	6%,
+	16% {
+		width: var(--diametrobig);
+	}
+}
+@keyframes sat4 {
+	0%,
+	22%,
+	40%,
+	100% {
+		width: var(--diametro);
+	}
+	26%,
+	36% {
+		width: var(--diametrobig);
+	}
+}
+@keyframes sat3 {
+	0%,
+	42%,
+	60%,
+	100% {
+		width: var(--diametro);
+	}
+	46%,
+	56% {
+		width: var(--diametrobig);
+	}
+}
+@keyframes sat2 {
+	0%,
+	60%,
+	80%,
+	100% {
+		width: var(--diametro);
+	}
+	64%,
+	76% {
+		width: var(--diametrobig);
+	}
+}
+@keyframes sat1 {
+	0%,
+	79%,
+	99%,
+	100% {
+		width: var(--diametro);
+	}
+	83%,
+	95% {
+		width: var(--diametrobig);
+	}
+}
+
+@keyframes anillo {
+	0% {
+		scale: 0;
+		opacity: 0;
+		transform: translate(0, 0);
+	}
+	1% {
+		scale: 0.5;
+		opacity: 1;
+	}
+	6%,
+	16% {
+		transform: translate(var(--izquierda), 50vh) rotate(72deg);
+		scale: 1;
+		opacity: 1;
+	}
+	26%,
+	36% {
+		transform: translate(var(--izquierda), 50vh) rotate(144deg);
+		scale: 1;
+		opacity: 1;
+		background-color: #7e040f;
+	}
+	46%,
+	56% {
+		transform: translate(var(--izquierda), 50vh) rotate(216deg);
+		scale: 1;
+		opacity: 1;
+	}
+	64%,
+	76% {
+		transform: translate(var(--izquierda), 50vh) rotate(288deg);
+		scale: 1;
+		opacity: 1;
+	}
+	83%,
+	95% {
+		transform: translate(var(--izquierda), 50vh) rotate(360deg);
+		scale: 1;
+		opacity: 1;
+	}
+	21% {
+		transform: translate(calc(var(--izquierda) - 15vw), 30vh) rotate(60deg);
+		scale: 1;
+		opacity: 1;
+	}
+	41% {
+		transform: translate(calc(var(--izquierda) - 15vw), 60vh) rotate(150deg);
+		scale: 1;
+		opacity: 1;
+	}
+	60% {
+		transform: translate(calc(var(--izquierda) - 15vw), 25vh) rotate(200deg);
+		scale: 1;
+		opacity: 1;
+		background-color: #43bccd;
+	}
+	79% {
+		transform: translate(calc(var(--izquierda) - 15vw), 40vh) rotate(300deg);
+		scale: 1;
+		opacity: 1;
+	}
+	100% {
+		scale: 0.4;
+		opacity: 0;
+		transform: translate(100vw, 100vh) rotate(440deg);
+	}
+}
+
+@keyframes entrarizq {
+	0% {
+		transform: translateX(var(--inicioizq, -100%));
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes rotaracero {
+	from {
+		transform: rotate(var(--giroinicial)) translateX(-25vw);
+	}
+	to {
+		transform: rotate(0) translateX(0);
+	}
+}

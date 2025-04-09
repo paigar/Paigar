@@ -1,0 +1,95 @@
+#bilbao {
+	padding-top: 10vh;
+	padding-bottom: 20vh;
+	--posinicio: var(--alturaCabecera);
+	--altura: var(--alturaBilbao);
+}
+#bilbao .intro {
+	position: sticky;
+	top: 0;
+}
+#bilbao .titulo {
+	position: relative;
+	background: #232526; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		to right,
+		#414345,
+		#232526
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		to right,
+		#414345,
+		#232526
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+#bilbao .titulo .fondo {
+	position: absolute;
+	background-color: var(--clr-fondo-400);
+	inset: 0;
+	z-index: 0;
+	--nombreanimacion: crecerlado;
+	--xinicial: 100%;
+	--xfinal: 0;
+	--posinicio: 0;
+	--altura: calc(var(--alturaPantalla) / 1.5);
+	transform-origin: 100% 100%;
+}
+
+#bilbao .titulo h2 {
+	text-align: center;
+	max-width: 25ch;
+	margin-inline: auto;
+	font-size: clamp(1.5rem, 5vw, 3rem);
+	line-height: 1.2em;
+	padding-block: 0.5em;
+	color: var(--clr-fondo-100);
+}
+#bilbao .titulo h2 span {
+	--nombreanimacion: decrecer;
+	--posinicio: 0;
+	--altura: calc(var(--alturaPantalla) / 2);
+	transform-origin: 80% 50%;
+	position: relative;
+	z-index: 9;
+	display: inline-block;
+}
+
+#bilbao .titulo + .contenedor {
+	margin-top: 2rem;
+}
+#bilbao .texto {
+	margin-top: 25vh;
+	margin-inline: 1rem;
+	padding: 1.5em;
+	position: relative;
+	z-index: 1;
+	background-color: var(--clr-fondo-400-trans);
+}
+#bilbao .texto + div {
+	height: 1rem;
+}
+#bilbao .imagen {
+	position: relative;
+	width: 100%;
+	height: 60vh;
+	z-index: -1;
+	--nombreanimacion: crecerlado;
+	--xinicial: 0;
+	--xfinal: 0;
+	--posinicio: calc(var(--alturaCabecera) / 2);
+	--altura: calc(var(--alturaPantalla) / 2);
+}
+#bilbao .imagen::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: var(--clr-fondo-400);
+	animation: var(--nombreanimacion) 1s linear forwards;
+	animation-play-state: paused;
+	animation-delay: calc(
+		((var(--recorrido) - var(--posinicio)) / var(--altura)) * -1s
+	);
+	animation-fill-mode: both;
+
+	transform-origin: left;
+}

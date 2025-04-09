@@ -1,0 +1,78 @@
+#cabecera {
+	--altura: min(8vh, 6rem);
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: var(--altura);
+	background-color: var(--clr-fondo-100);
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+	z-index: 10;
+}
+#cabecera .contenedor {
+	display: flex;
+	height: 100%;
+	align-items: center;
+}
+#cabecera a {
+	text-transform: uppercase;
+	font-weight: 950;
+	font-size: calc(var(--altura) / 2);
+	letter-spacing: -0.025em;
+	color: #000;
+	text-decoration: none;
+	transition: color 300ms linear;
+}
+#cabecera a:hover {
+	color: #f86624;
+}
+#principal {
+	padding-block: 8rem;
+}
+#principal * + h2 {
+	margin-top: 1.5em;
+}
+#principal * + h3,
+#principal * + p,
+#principal * + ol,
+#principal * + ul {
+	margin-top: 1em;
+}
+#principal li + li {
+	margin-top: 0.75em;
+}
+#principal a {
+	color: #662e9b;
+	transition: color 300ms linear;
+}
+#principal a:hover {
+	color: #f86624;
+}
+#principal ul {
+	margin-block: 1em;
+	list-style: none;
+	padding: 0;
+}
+#principal ul li {
+	padding-left: 1.75em;
+	position: relative;
+	isolation: isolate;
+	padding-block: 0.2em;
+}
+#principal ul li::before {
+	content: "";
+	position: absolute;
+	top: 0.4em;
+	left: 0.3em;
+	background-color: #662e9b;
+	height: 1em;
+	width: 1em;
+	clip-path: polygon(28% 38%, 41% 53%, 75% 24%, 86% 38%, 40% 78%, 15% 50%);
+	z-index: -1;
+}
+#principal table {
+	margin-top: 1em;
+}
+#principal + .pie .blockquote {
+	--posinicio: calc(var(--alturaPrincipal) - (var(--alturaPantalla) / 2));
+	--altura: calc(var(--alturaPantalla) / 2.5);
+}

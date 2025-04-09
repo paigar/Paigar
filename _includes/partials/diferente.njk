@@ -1,0 +1,34 @@
+{%- css %}{% include "public/css/diferente.css" %}{% endcss %}
+{% set articulos = collections.diferente %}
+
+<section id="diferente" class="seccion">
+  <div class="mensaje animado">
+    <p class="animado">
+      <b>Piensa</b> diferente</p>
+  </div>
+  <div class="mensaje animado">
+    <p class="animado">
+      <b>Sé</b> diferente</p>
+  </div>
+  <div class="mensaje animado">
+    <p class="animado">
+      <b>Haz tu web</b> diferente</p>
+  </div>
+  <div id="bloques" class="bloques">
+    <div class="anillo animado">
+      <div class="circulo">
+        {% for articulo in articulos | reverse %}
+          <div class="sat animado">
+            {% include "svg/" + articulo.data.icono %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% for articulo in articulos %}
+      <div class="bloque">
+        <h2>{{ articulo.data.titulo }}</h2>
+        {{ articulo.content | safe }}
+      </div>
+    {% endfor %}
+  </div>
+</section>

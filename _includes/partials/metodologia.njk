@@ -1,0 +1,28 @@
+{%- css %}{% include "public/css/metodologia.css" %}{% endcss %}
+{% set articulos = collections.formatrabajo %}
+
+<section id="formatrabajo" class="seccion">
+  <div class="imagen cubrir animado">
+    <img src="/img/p1.png" alt=""/>
+    <div class="fundido animado cubrir">
+      <img src="/img/p2.png" alt=""/>
+    </div>
+    <div class="progreso animado cubrir"></div>
+  </div>
+  <div class="textos">
+    <div class="intro animado">
+      <div class="text">
+        <h2>Mi proceso de trabajo</h2>
+        <p>¿Te interesa que trabajemos juntos en tu próximo proyecto web?</p>
+      </div>
+    </div>
+
+    {% for articulo in articulos %}
+      <div class="bloque animado">
+        <h3 class="animado">{{ articulo.data.titulo }}</h3>
+        {{ articulo.content | safe }}
+      </div>
+    {% endfor %}
+
+  </div>
+</section>

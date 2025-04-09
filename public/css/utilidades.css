@@ -1,0 +1,36 @@
+/* Utilidades */
+.contenedor {
+	width: min(100% - 2rem, 60rem);
+	margin: auto;
+}
+
+.cubrir {
+	position: relative;
+}
+.cubrir img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+.animado {
+	animation: var(--nombreanimacion) 1s linear forwards;
+	animation-play-state: paused;
+	animation-delay: calc(
+		((var(--recorrido, 1) - var(--posinicio, 0)) / var(--altura, 1)) * -1s
+	);
+	animation-fill-mode: both;
+}
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}

@@ -1,0 +1,117 @@
+{%- css %}{% include "public/css/contacto.css" %}{% endcss %}
+
+<section id="contacto" class="seccion">
+  <div class="titulo animado">
+    <div class="fondo animado"></div>
+    <h2>¿Listo para empezar un proyecto juntos?</h2>
+  </div>
+  <div class="contenedor">
+    <div class="info">
+      <p>Contáctame ahora y comencemos a darle forma a tus ideas.</p>
+    </div>
+    <div class="doscol">
+      <div class="col">
+        <ul>
+          <li>
+            <span class="animado">{% include "svg/sobre.svg" %}</span>
+            <a href="mailto:juanjo@paigar.es">juanjo@paigar.es</a>
+          </li>
+          <li>
+            <span class="animado">{% include "svg/telefono.svg" %}</span>
+            <a href="tel:+34944130535">+34 944 130 535</a>
+          </li>
+          <li>
+            <span class="animado">{% include "svg/whatsapp.svg" %}</span>
+            <a href="https://wa.me/+34605639214?text=Hola!">Whatsapp</a>
+          </li>
+          <li>
+            <span class="animado">{% include "svg/localizacion.svg" %}</span>
+            Bilbao, Spain
+					</li>
+        </ul>
+      </div>
+      <div class="col">
+        <form
+								name="contactopaigar"
+								action="/gracias"
+								method="POST"
+								autocomplete="off">
+          <div class="campos">
+            <div class="campo">
+              <input
+											class="input"
+											type="text"
+											id="formnombre"
+											name="nombre"
+											value=""
+											onchange="this.setAttribute('value', this.value);"
+											pattern=".{3,}"
+											title="Mínimo de 3 caracteres"
+											required=""/>
+              <label class="etiqueta" for="formnombre">Tu nombre</label>
+              <span class="estado"></span>
+            </div>
+            <div class="campo">
+              <input
+											class="input"
+											type="text"
+											pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+											id="formemail"
+											name="email"
+											value=""
+											onchange="this.setAttribute('value', this.value);"
+											title="No parece un email válido"
+											required=""/>
+              <label class="etiqueta" for="formemail">Tu email</label>
+              <span class="estado"></span>
+            </div>
+            <div class="campo">
+              <textarea
+											class="input"
+											id="formmensaje"
+											name="Mensaje"
+											value=""
+											onchange="this.setAttribute('value', this.value);"
+											required=""></textarea>
+              <label class="etiqueta" for="formmensaje"
+											>¿En qué puedo ayudarte?</label
+										>
+              <span class="estado"></span>
+            </div>
+            <div class="campo visually-hidden">
+              <input
+											class="input"
+											type="text"
+											id="presupuesto"
+											name="presupuesto"
+											value=""/>
+              <label class="etiqueta" for="presupuesto"
+											>No rellenes esto si eres un ser humano</label
+										>
+              <span class="estado"></span>
+            </div>
+          </div>
+          <div class="legal">
+            <input
+										type="checkbox"
+										id="legal"
+										name="textoLegal"
+										class="todo"
+										required=""/>
+            <label for="legal"
+										>He leído y acepto las condiciones de la
+										<a href="#">política de privacidad</a>
+            </label
+									>
+          </div>
+          <div class="enviar">
+            <input type="hidden" name="idioma" class="" value="es"/>
+            <div class="botonenviar">
+              <input type="submit" name="enviar" value="Enviar"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
