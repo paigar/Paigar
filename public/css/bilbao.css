@@ -64,6 +64,7 @@
 	position: relative;
 	z-index: 1;
 	background-color: var(--clr-fondo-400-trans);
+	font-size: clamp(1rem, 0.5rem + 2vw, 1.5rem);
 }
 #bilbao .texto + div {
 	height: 1rem;
