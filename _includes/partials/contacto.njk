@@ -3,11 +3,11 @@
 <section id="contacto" class="seccion">
   <div class="titulo animado">
     <div class="fondo animado"></div>
-    <h2>¿Listo para empezar un proyecto juntos?</h2>
+    <h2>{{ contenidos.contacto.titulo }}</h2>
   </div>
   <div class="contenedor">
     <div class="info">
-      <p>Contáctame ahora y comencemos a darle forma a tus ideas.</p>
+      <p>{{ contenidos.contacto.subtitulo }}</p>
     </div>
     <div class="doscol">
       <div class="col">
@@ -46,9 +46,9 @@
 											value=""
 											onchange="this.setAttribute('value', this.value);"
 											pattern=".{3,}"
-											title="Mínimo de 3 caracteres"
+											title="{{ contenidos.contacto.campos.nombrevalidar }}"
 											required=""/>
-              <label class="etiqueta" for="formnombre">Tu nombre</label>
+              <label class="etiqueta" for="formnombre">{{ contenidos.contacto.campos.nombre }}</label>
               <span class="estado"></span>
             </div>
             <div class="campo">
@@ -60,9 +60,9 @@
 											name="email"
 											value=""
 											onchange="this.setAttribute('value', this.value);"
-											title="No parece un email válido"
+											title="{{ contenidos.contacto.campos.emailvalidar }}"
 											required=""/>
-              <label class="etiqueta" for="formemail">Tu email</label>
+              <label class="etiqueta" for="formemail">{{ contenidos.contacto.campos.email }}</label>
               <span class="estado"></span>
             </div>
             <div class="campo">
@@ -74,7 +74,7 @@
 											onchange="this.setAttribute('value', this.value);"
 											required=""></textarea>
               <label class="etiqueta" for="formmensaje"
-											>¿En qué puedo ayudarte?</label
+											>{{ contenidos.contacto.campos.mensaje }}</label
 										>
               <span class="estado"></span>
             </div>
@@ -86,7 +86,7 @@
 											name="presupuesto"
 											value=""/>
               <label class="etiqueta" for="presupuesto"
-											>No rellenes esto si eres un ser humano</label
+											>{{ contenidos.contacto.campos.robots }}</label
 										>
               <span class="estado"></span>
             </div>
@@ -99,15 +99,14 @@
 										class="todo"
 										required=""/>
             <label for="legal"
-										>He leído y acepto las condiciones de la
-										<a href="#">política de privacidad</a>
+										>{{ contenidos.contacto.campos.legal | safe}}
             </label
 									>
           </div>
           <div class="enviar">
             <input type="hidden" name="idioma" class="" value="es"/>
             <div class="botonenviar">
-              <input type="submit" name="enviar" value="Enviar"/>
+              <input type="submit" name="enviar" value="{{ contenidos.contacto.campos.enviar }}"/>
             </div>
           </div>
         </form>

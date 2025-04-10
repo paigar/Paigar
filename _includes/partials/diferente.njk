@@ -4,31 +4,31 @@
 <section id="diferente" class="seccion">
   <div class="mensaje animado">
     <p class="animado">
-      <b>Piensa</b> diferente</p>
+      {{ contenidos.diferente.tip1 | safe }}</p>
   </div>
   <div class="mensaje animado">
     <p class="animado">
-      <b>Sé</b> diferente</p>
-  </div>
-  <div class="mensaje animado">
-    <p class="animado">
-      <b>Haz tu web</b> diferente</p>
-  </div>
-  <div id="bloques" class="bloques">
-    <div class="anillo animado">
-      <div class="circulo">
-        {% for articulo in articulos | reverse %}
-          <div class="sat animado">
-            {% include "svg/" + articulo.data.icono %}
+      {{ contenidos.diferente.tip2 | safe }}
+    </div>
+    <div class="mensaje animado">
+      <p class="animado">
+        {{ contenidos.diferente.tip3 | safe }}
+      </div>
+      <div id="bloques" class="bloques">
+        <div class="anillo animado">
+          <div class="circulo">
+            {% for articulo in articulos | reverse %}
+              <div class="sat animado">
+                {% include "svg/" + articulo.data.icono %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% for articulo in articulos %}
+          <div class="bloque">
+            <h2>{{ articulo.data.titulo }}</h2>
+            {{ articulo.content | safe }}
           </div>
         {% endfor %}
       </div>
-    </div>
-    {% for articulo in articulos %}
-      <div class="bloque">
-        <h2>{{ articulo.data.titulo }}</h2>
-        {{ articulo.content | safe }}
-      </div>
-    {% endfor %}
-  </div>
-</section>
+    </section>

@@ -17,7 +17,15 @@ h3 {
 	position: relative;
 	min-height: 100vh;
 }
-.wrapper {
-	overflow-x: hidden;
-	position: relative;
+
+@media (max-width: 45rem) {
+	#cabecera,
+	#bilbao .intro,
+	#diferente,
+	#formatrabajo .textos,
+	#contacto {
+		overflow-x: hidden;
+		overflow-y: visible;
+		position: relative;
+	}
 }

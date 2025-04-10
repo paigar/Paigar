@@ -1,0 +1,35 @@
+{
+	"diferente": {
+		"tip1": "<b>Piensa</b> diferente",
+		"tip2": "<b>Sé</b> diferente",
+		"tip3": "<b>Haz tu web</b> diferente"
+	},
+	"metodologia": {
+		"titulo": "Mi proceso de trabajo",
+		"subtitulo": "¿Te interesa que trabajemos juntos en tu próximo proyecto web?"
+	},
+	"contacto": {
+		"titulo": "¿Listo para empezar un proyecto juntos?",
+		"subtitulo": "Contáctame ahora y comencemos a darle forma a tus ideas.",
+		"campos": {
+			"nombre": "Tu nombre",
+			"nombrevalidar": "Mínimo de 3 caracteres",
+			"email": "Tu email",
+			"emailvalidar": "No parece un email válido",
+			"mensaje": "¿En qué puedo ayudarte?",
+			"robots": "No rellenes esto si eres un ser humano",
+			"legal": "He leído y acepto las condiciones de la <a href=\"/politica-de-privacidad/\" target=\"_blank\">política de privacidad</a>",
+			"enviar": "Enviar"
+		}
+	},
+	"cita": {
+		"texto": "\"Yo... he visto cosas que vosotros no creeríais: Diseñar páginas web usando <span>Frontpage</span>. He visto <span>GIFs animados</span> colonizar sitios completos más allá de los dominios de <span>Geocities</span>. Todos esos momentos se perderán... en el tiempo... como cookies en la red. Es hora de <span>innovar</span>\"",
+		"autor": "&mdash;Juanjo Marcos (Paigar)",
+		"cargo": "Desarrollador web"
+	},
+	"menupie": [
+		{ "texto": "Aviso legal", "link": "/aviso-legal/" },
+		{ "texto": "Política de privacidad", "link": "/politica-de-privacidad/" },
+		{ "texto": "Uso de cookies", "link": "/uso-de-cookies/" }
+	]
+}

@@ -4,32 +4,22 @@
 <footer class="pie">
   <div class="cita">
     <div class="blockquote animado">
-      <h2>
-						"Yo... he visto cosas que vosotros no creeríais: Diseñar páginas web
-						usando <span>Frontpage</span>. He visto
-						<span>GIFs animados</span> colonizar sitios completos más allá de
-						los dominios de <span>Geocities</span>. Todos esos momentos se
-						perderán... en el tiempo... como cookies en la red. Es hora de
-						<span>innovar</span>"
-					</h2>
-      <h3>&mdash;Juanjo Marcos (Paigar)<br/>
-        <em>Desarrollador web</em>
+      <h2>{{ contenidos.cita.texto | safe }}</h2>
+      <h3>{{ contenidos.cita.autor | safe }}<br/>
+        <em>{{ contenidos.cita.cargo | safe }}</em>
       </h3>
     </div>
   </div>
   <div class="fijo" id="piefijo">
     <div class="contenedor">
-      <p>© {% currentYear %} Paigar</p>
+      <p>© {% currentYear %}
+        {{ client.siteName }}</p>
       <ul>
-        <li>
-          <a href="/aviso-legal/">Aviso legal</a>
-        </li>
-        <li>
-          <a href="/politica-de-privacidad/">Política de privacidad</a>
-        </li>
-        <li>
-          <a href="/uso-de-cookies/">Uso de cookies</a>
-        </li>
+        {% for item in contenidos.menupie %}
+          <li>
+            <a href="{{ item.link }}">{{ item.texto }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
   </div>
