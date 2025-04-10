@@ -45,10 +45,12 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    {{ content | safe }}
+    <div class="wrapper">
+      {{ content | safe }}
 
-    {% include "partials/pie.njk" %}
-    <!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
+      {% include "partials/pie.njk" %}
+      <!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
+    </div>
     {%- js %}{% include "public/js/externallinks.js" %}{% endjs %}
     {%- js %}{% include "public/js/cookieconsent.js" %}{% endjs %}
     {%- js %}{% include "public/js/cookieconsent-init.js" %}{% endjs %}

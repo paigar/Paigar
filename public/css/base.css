@@ -17,3 +17,7 @@ h3 {
 	position: relative;
 	min-height: 100vh;
 }
+.wrapper {
+	overflow-x: hidden;
+	position: relative;
+}
