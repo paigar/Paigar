@@ -18,14 +18,11 @@ h3 {
 	min-height: 100vh;
 }
 
-@media (max-width: 45rem) {
-	#cabecera,
-	#bilbao .intro,
-	#diferente,
-	#formatrabajo .textos,
-	#contacto {
-		overflow-x: hidden;
-		overflow-y: visible;
-		position: relative;
-	}
+#cabecera,
+#bilbao .intro,
+#diferente,
+#formatrabajo .textos {
+	overflow-x: hidden;
+	overflow-y: visible;
+	position: relative;
 }

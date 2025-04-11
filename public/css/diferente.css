@@ -141,6 +141,44 @@
 	display: grid;
 	place-items: center;
 }
+#diferente .circulo .fondo {
+	position: absolute;
+	inset: 0;
+	border-radius: 100%;
+	overflow: hidden;
+	z-index: -10;
+	--nombreanimacion: rotar;
+	--rotacioninicial: -60deg;
+	--rotacionfinal: -360deg;
+}
+#diferente .circulo .fondo::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(transparent 30%, #fff 75%);
+}
+#diferente .circulo .fondo picture,
+#diferente .circulo .fondo img {
+	position: absolute;
+	inset: 0;
+	isolation: isolate;
+	border-radius: 100vw;
+}
+#diferente .circulo .fondo picture:nth-child(1) {
+	--nombreanimacion: int1;
+}
+#diferente .circulo .fondo picture:nth-child(2) {
+	--nombreanimacion: int2;
+}
+#diferente .circulo .fondo picture:nth-child(3) {
+	--nombreanimacion: int3;
+}
+#diferente .circulo .fondo picture:nth-child(4) {
+	--nombreanimacion: int4;
+}
+#diferente .circulo .fondo picture:nth-child(5) {
+	--nombreanimacion: int5;
+}
 #diferente .sat {
 	--diametro: 5vw;
 	--diametrobig: 20vw;

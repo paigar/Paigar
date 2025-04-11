@@ -9,7 +9,11 @@
     </div>
     <div class="contenedor">
       <div class="imagen cubrir">
-        <img src="{{ articulo.data.imagen }}" alt=""/>
+        <picture>
+          <source srcset="/img/b1.webp" type="image/webp">
+          <source srcset="/img/b1.jpg" type="image/jpeg">
+          <img src="/img/b1.jpg" alt="">
+        </picture>
       </div>
     </div>
   </div>

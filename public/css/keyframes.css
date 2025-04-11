@@ -108,6 +108,72 @@
 	}
 }
 
+@keyframes int1 {
+	0%,
+	2%,
+	20%,
+	100% {
+		opacity: 0;
+		transform: rotate(-80deg);
+	}
+	6%,
+	16% {
+		opacity: 1;
+	}
+}
+@keyframes int2 {
+	0%,
+	22%,
+	40%,
+	100% {
+		opacity: 0;
+		transform: rotate(-170deg);
+	}
+	26%,
+	36% {
+		opacity: 1;
+	}
+}
+@keyframes int3 {
+	0%,
+	42%,
+	60%,
+	100% {
+		opacity: 0;
+		transform: rotate(160deg);
+	}
+	46%,
+	56% {
+		opacity: 1;
+	}
+}
+@keyframes int4 {
+	0%,
+	60%,
+	80%,
+	100% {
+		opacity: 0;
+		transform: rotate(80deg);
+	}
+	64%,
+	76% {
+		opacity: 1;
+	}
+}
+@keyframes int5 {
+	0%,
+	79%,
+	99%,
+	100% {
+		opacity: 0;
+		transform: rotate(-10deg);
+	}
+	83%,
+	95% {
+		opacity: 1;
+	}
+}
+
 @keyframes anillo {
 	0% {
 		scale: 0;
