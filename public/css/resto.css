@@ -26,7 +26,15 @@
 	color: #f86624;
 }
 #principal {
-	padding-block: 8rem;
+	min-height: 100vh;
+	padding-bottom: 10vh;
+}
+#principal .imagencabecera {
+	height: 50vh;
+	margin-bottom: 2em;
+}
+#principal h1 {
+	line-height: 1.1;
 }
 #principal * + h2 {
 	margin-top: 1.5em;
@@ -75,4 +83,30 @@
 #principal + .pie .blockquote {
 	--posinicio: calc(var(--alturaPrincipal) - (var(--alturaPantalla) / 2));
 	--altura: calc(var(--alturaPantalla) / 2.5);
+}
+#principal a {
+	text-decoration: none;
+	color: #662e9b;
+}
+#principal a:not([href^="mailto:"]) {
+	display: inline-block;
+	width: fit-content;
+	margin: 1em 0 0;
+	padding: 0.5em 2em;
+	border: 1px solid #ccc;
+	border-radius: 0.25em;
+	background-image: linear-gradient(
+		to right,
+		#414345,
+		#232526 50%,
+		var(--clr-fondo-100) 50%
+	);
+	background-size: 200%;
+	background-position: right;
+	transition: 300ms linear;
+	cursor: pointer;
+}
+#principal a:not([href^="mailto:"]):hover {
+	color: var(--clr-fondo-100);
+	background-position: left;
 }

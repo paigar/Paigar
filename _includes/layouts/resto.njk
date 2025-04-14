@@ -12,6 +12,13 @@ layout: layouts/base.njk
   {% include "partials/cabecera_resto.njk" %}
 </header>
 <main id="principal">
+  <div class="imagencabecera cubrir">
+    <picture>
+      <source srcset="/img/f1.webp" type="image/webp">
+      <source srcset="/img/f1.jpg" type="image/jpeg">
+      <img src="/img/f1.jpg" alt="">
+    </picture>
+  </div>
   <div class="contenedor">
     {{ content | safe }}
   </div>

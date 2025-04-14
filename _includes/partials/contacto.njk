@@ -33,7 +33,7 @@
       <div class="col">
         <form
 								name="contactopaigar"
-								action="/gracias"
+								action="https://forms.idenautas.work/paigar.php"
 								method="POST"
 								autocomplete="off">
           <div class="campos">
@@ -104,6 +104,7 @@
 									>
           </div>
           <div class="enviar">
+            <input type="hidden" name="origenurl" value="{{ page.url }}">
             <input type="hidden" name="idioma" class="" value="es"/>
             <div class="botonenviar">
               <input type="submit" name="enviar" value="{{ contenidos.contacto.campos.enviar }}"/>

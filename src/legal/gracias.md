@@ -1,14 +1,14 @@
 ---
 title: Gracias
-subtitle: Tu mensaje ha sido correctamente enviado
 permalink: /gracias.html
 layout: layouts/resto.njk
-cabecera: aboutme/gracias.png
-enlace: /gracias.html
-nombreseccion: Gracias por tu mensaje
 eleventyExcludeFromCollections: true
 ---
 
-¡Hola viajero! Tu mensaje ha llegado a buen puerto. Quería confirmarte que lo he recibido correctamente y que lo revisaré pronto. Te contestaré lo antes posible con toda la info que necesites.
+# Tu mensaje ha sido correctamente enviado
 
-Gracias por contactar y por tu paciencia. ¡Seguimos en contacto!
+¡Hola! Tu mensaje ha llegado con éxito a mi bandeja de entrada. Quería confirmarte que lo he recibido correctamente y que lo revisaré en breve. Te contestaré lo antes posible con toda la información que necesites sobre tu proyecto web.
+
+Gracias por contactar conmigo y por tu paciencia. ¡Pronto estaremos trabajando juntos para hacer realidad tu idea digital!
+
+[Volver](/)
