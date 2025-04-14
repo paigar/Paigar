@@ -88,7 +88,7 @@
 	text-decoration: none;
 	color: #662e9b;
 }
-#principal a:not([href^="mailto:"]) {
+#principal a.boton {
 	display: inline-block;
 	width: fit-content;
 	margin: 1em 0 0;
@@ -106,7 +106,7 @@
 	transition: 300ms linear;
 	cursor: pointer;
 }
-#principal a:not([href^="mailto:"]):hover {
+#principal a.boton:hover {
 	color: var(--clr-fondo-100);
 	background-position: left;
 }

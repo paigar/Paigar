@@ -11,4 +11,4 @@ eleventyExcludeFromCollections: true
 
 Gracias por contactar conmigo y por tu paciencia. ¡Pronto estaremos trabajando juntos para hacer realidad tu idea digital!
 
-[Volver](/)
+<a href="/" class="boton">Volver</a>
