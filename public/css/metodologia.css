@@ -43,7 +43,7 @@
 	place-items: center;
 	text-align: center;
 	padding: 10%;
-	font-size: min(9vh, 9vw);
+	font-size: min(9vh, 9vw, 6rem);
 	background-color: var(--clr-fondo-400);
 	transform-origin: 100% 0;
 	--nombreanimacion: rotar;
@@ -65,7 +65,7 @@
 	font-weight: 100;
 	margin-block: 1em;
 }
-@media (orientation: portrait) {
+@media (max-width: 800px) {
 	#formatrabajo {
 		display: block;
 	}

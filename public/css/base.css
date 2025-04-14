@@ -17,12 +17,3 @@ h3 {
 	position: relative;
 	min-height: 100vh;
 }
-
-#cabecera,
-#bilbao .intro,
-#diferente,
-#formatrabajo .textos {
-	overflow-x: hidden;
-	overflow-y: visible;
-	position: relative;
-}

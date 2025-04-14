@@ -37,14 +37,14 @@
 	object-fit: cover;
 	object-position: center;
 }
-@media (orientation: landscape) {
-	#cabecera {
-		grid-template-areas: "intro imagen" "intro imagen";
-	}
-}
 @media (orientation: portrait) {
 	#cabecera {
 		grid-template-areas: "intro intro" "imagen imagen";
+	}
+}
+@media (orientation: landscape), (min-width: 800px) {
+	#cabecera {
+		grid-template-areas: "intro imagen" "intro imagen";
 	}
 }
 #cabecera .logo {
