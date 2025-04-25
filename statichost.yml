@@ -1,3 +1,2 @@
-image: node:18.16.0
 command: npm install && npm run build
 public: _site
