@@ -9,10 +9,13 @@
 	position: sticky;
 	bottom: 0;
 	z-index: 10;
+	font-size: 0.7em;
+	white-space: nowrap;
 }
 .pie .contenedor {
 	display: flex;
 	justify-content: space-between;
+	width: 95%;
 }
 .pie ul {
 	display: flex;
