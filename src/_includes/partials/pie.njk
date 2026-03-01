@@ -4,7 +4,7 @@
       <p class="pie__heading">Navegación</p>
       <ul class="pie__menu">
         {%- for item in mainmenu.items %}
-          <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
+          <li><a href="{{ item.url }}"{% if page.url == item.url or (item.url != "/" and page.url | startsWith(item.url)) %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
         {%- endfor %}
       </ul>
     </div>
@@ -30,6 +30,7 @@
       <p class="pie__copy">&copy; {% currentYear %} Juanjo Marcos</p>
       <p class="pie__tech">Hecho con <a href="https://www.11ty.dev/">Eleventy</a></p>
       <a href="/versiones/" class="pie__versions">Versiones anteriores</a>
+      <a href="/feed/feed.xml" class="pie__versions">RSS</a>
     </div>
   </div>
 </footer>

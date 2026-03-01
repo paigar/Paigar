@@ -3,6 +3,8 @@
     <{{ postHeading or "h3" }} class="postcard__title">{{ post.data.title }}</{{ postHeading or "h3" }}>
     <p class="postcard__meta">
       <time datetime="{{ post.data.date | htmlDateString }}">{{ post.data.date | readableDate }}</time>
+      <span class="postcard__sep">&middot;</span>
+      <span>{{ post.content | readingTime }}</span>
     </p>
     {% if post.data.description %}
       <p class="postcard__description">{{ post.data.description }}</p>

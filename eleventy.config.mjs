@@ -9,11 +9,12 @@ import pluginBundle from "@11ty/eleventy-plugin-bundle";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import Image from "@11ty/eleventy-img";
+import { minify as htmlMinify } from "html-minifier-terser";
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
-		"./public/": "/",
+		"./src/public/": "/",
 	});
 
 	// Official plugins
@@ -81,6 +82,19 @@ export default function (eleventyConfig) {
 			palabras.slice(0, numPalabras).join(" ") +
 			(palabras.length > numPalabras ? "..." : "")
 		);
+	});
+
+	// Filtro para tiempo estimado de lectura
+	eleventyConfig.addFilter("readingTime", function (content) {
+		if (!content) return "";
+		const words = content.replace(/<[^>]+>/g, "").split(/\s+/).length;
+		const minutes = Math.ceil(words / 200);
+		return `${minutes} min`;
+	});
+
+	// Filtro para comprobar prefijo de URL (navegación activa)
+	eleventyConfig.addFilter("startsWith", function (str, prefix) {
+		return str && str.startsWith(prefix);
 	});
 
 	// Filtro para partir títulos en líneas (para imágenes OG en SVG)
@@ -196,12 +210,25 @@ export default function (eleventyConfig) {
 		console.log(`[og-images] ${converted} generada(s), ${cached} en caché`);
 	});
 
+	// Minificar HTML (incluye CSS y JS inline)
+	eleventyConfig.addTransform("htmlmin", async function (content) {
+		if ((this.page.outputPath || "").endsWith(".html")) {
+			return await htmlMinify(content, {
+				collapseWhitespace: true,
+				removeComments: true,
+				minifyCSS: true,
+				minifyJS: true,
+			});
+		}
+		return content;
+	});
+
 	return {
 		templateFormats: ["njk", "md", "html"],
 		markdownTemplateEngine: "njk",
 		htmlTemplateEngine: "njk",
 		dir: {
-			input: "content",
+			input: "src/content",
 			includes: "../_includes",
 			data: "../_data",
 			output: "_site",

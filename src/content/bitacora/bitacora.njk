@@ -7,16 +7,30 @@ tags: []
 ---
 
 <div class="seccion-header reveal ancho">
-  <h1 class="seccion-header__title">Bitácora</h1>
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> Bitácora</h1>
   <p class="seccion-header__description">Proyectos, experimentos y descubrimientos técnicos. Lo que construyo y lo que aprendo por el camino.</p>
 </div>
 
 {%- set posts = collections.bitacora | ordenarPorFecha %}
+{%- set destacado = null %}
+{%- for post in posts %}
+  {%- if post.data.destacado and not destacado %}
+    {%- set destacado = post %}
+  {%- endif %}
+{%- endfor %}
+
+{%- if destacado %}
+  {%- set post = destacado %}
+  {% include "partials/postcard-destacado.njk" %}
+{%- endif %}
+
 {%- if posts.length > 0 %}
-  <div class="posts-list reveal-stagger ancho">
+  <div class="posts-grid reveal-stagger ancho">
     {%- for post in posts %}
-      {%- set postHeading = "h2" %}
-      {% include "partials/postcard.njk" %}
+      {%- if post != destacado %}
+        {%- set postHeading = "h2" %}
+        {% include "partials/postcard.njk" %}
+      {%- endif %}
     {%- endfor %}
   </div>
 {%- else %}

@@ -399,6 +399,7 @@
 	position: relative;
 	padding: var(--space-m);
 	margin-bottom: var(--space-s);
+	background-color: var(--color-fondo-alt);
 	border: 1px solid var(--color-borde-sutil);
 	border-radius: var(--radius-m);
 	transition: border-color var(--transition-fast),
@@ -454,18 +455,109 @@
 .tag {
 	font-family: var(--font-mono);
 	font-size: var(--fs-2);
-	color: var(--color-acento);
-	background-color: var(--color-acento-suave);
+	color: var(--color-texto-alt);
+	background-color: transparent;
 	padding: 0.2em 0.6em;
 	border-radius: var(--radius-s);
 	text-decoration: none;
-	border: 1px solid transparent;
-	transition: background-color var(--transition-fast),
+	border: 1px solid var(--color-borde);
+	border-left: 2px solid var(--color-acento);
+	transition: color var(--transition-fast),
+		background-color var(--transition-fast),
 		border-color var(--transition-fast);
 }
 
 .tag:hover {
+	color: var(--color-acento);
+	background-color: var(--color-acento-suave);
 	border-color: var(--color-acento);
+}
+
+/* Evitar que .prosa a herede estilos de enlace en los tags */
+.prosa .tag {
+	background-image: none;
+	color: var(--color-texto-alt);
+}
+.prosa .tag:hover {
+	color: var(--color-acento);
+}
+
+/* ── Tarjeta de post destacado ── */
+.postcard-destacado {
+	padding: var(--space-l);
+	background-color: var(--color-fondo-alt);
+	border: 1px solid var(--color-borde-sutil);
+	border-left: 3px solid var(--color-acento);
+	border-radius: var(--radius-m);
+	margin-bottom: var(--space-l);
+	transition: border-color var(--transition-fast),
+		background-color var(--transition-fast),
+		box-shadow var(--transition-fast),
+		transform var(--transition-fast);
+}
+
+.postcard-destacado:hover {
+	border-color: var(--color-acento);
+	background-color: var(--color-fondo-alt);
+	box-shadow: 0 6px 30px var(--color-sombra),
+		0 0 0 1px var(--color-acento-suave);
+	transform: translateY(-2px);
+}
+
+.postcard-destacado__link {
+	text-decoration: none;
+	display: block;
+}
+
+.postcard-destacado__link:hover .postcard-destacado__title {
+	color: var(--color-acento);
+}
+
+.postcard-destacado__label {
+	font-family: var(--font-mono);
+	font-size: var(--fs-2);
+	color: var(--color-acento);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin-bottom: var(--space-xs);
+}
+
+.postcard-destacado__title {
+	font-size: var(--fs4);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	margin-bottom: 0.25em;
+	transition: color var(--transition-fast);
+}
+
+.postcard-destacado__meta {
+	font-size: var(--fs-1);
+	color: var(--color-texto-alt);
+	margin-bottom: 0.75em;
+	font-family: var(--font-mono);
+}
+
+.postcard-destacado__description {
+	color: var(--color-texto-alt);
+	line-height: 1.6;
+	max-width: 65ch;
+}
+
+/* ── Grid de posts ── */
+.posts-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-m);
+}
+
+.posts-grid .postcard {
+	margin-bottom: 0;
+}
+
+@media screen and (max-width: 45rem) {
+	.posts-grid {
+		grid-template-columns: 1fr;
+	}
 }
 
 /* ── Timeline ── */
@@ -720,9 +812,38 @@
 	}
 }
 
+/* ── Enlace "volver a…" ── */
+.post-back {
+	margin-top: var(--space-m);
+}
+
+.post-back__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	font-family: var(--font-mono);
+	font-size: var(--fs-1);
+	color: var(--color-texto-alt);
+	text-decoration: none;
+	padding: 0.5em 1em;
+	border: 1px solid var(--color-borde);
+	border-radius: var(--radius-m);
+	transition: color var(--transition-fast),
+		border-color var(--transition-fast),
+		background-color var(--transition-fast);
+}
+
+.post-back__link:hover {
+	color: var(--color-acento);
+	border-color: var(--color-acento);
+	background-color: var(--color-acento-suave);
+}
+
 /* ── Encabezado de sección ── */
 .seccion-header {
 	margin-bottom: var(--space-xl);
+	padding-bottom: var(--space-l);
+	border-bottom: 2px solid var(--color-borde);
 }
 
 .seccion-header__title {
@@ -730,6 +851,13 @@
 	font-weight: 800;
 	letter-spacing: -0.03em;
 	margin-bottom: var(--space-xs);
+}
+
+.seccion-header__marker {
+	color: var(--color-acento);
+	font-family: var(--font-mono);
+	font-weight: 400;
+	margin-right: 0.3em;
 }
 
 .seccion-header__description {

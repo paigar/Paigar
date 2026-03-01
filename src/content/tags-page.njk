@@ -15,36 +15,20 @@ eleventyComputed:
   permalink: "/tags/{{ tag | slugify }}/"
 ---
 
-<div class="prosa">
-  <h1>{{ tag }}</h1>
-  <p>{{ collections[tag] | length }} artículo{{ "s" if collections[tag] | length != 1 }} con esta etiqueta.</p>
+<div class="seccion-header reveal ancho">
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> {{ tag }}</h1>
+  <p class="seccion-header__description">{{ collections[tag] | length }} artículo{{ "s" if collections[tag] | length != 1 }} con esta etiqueta.</p>
 </div>
 
 {%- set posts = collections[tag] | ordenarPorFecha %}
 {%- if posts.length > 0 %}
-  <div class="posts-list ancho">
+  <div class="posts-grid reveal-stagger ancho">
     {%- for post in posts %}
       {% include "partials/postcard.njk" %}
     {%- endfor %}
   </div>
 {%- endif %}
 
-<div class="tags-back">
-  <a href="/tags/">← Todos los tags</a>
-</div>
-
-{%- css %}
-.tags-back {
-  margin-top: var(--space-l);
-}
-
-.tags-back a {
-  color: var(--color-acento);
-  text-decoration: none;
-  font-size: var(--fs-1);
-}
-
-.tags-back a:hover {
-  text-decoration: underline;
-}
-{% endcss %}
+<nav class="post-back ancho" style="margin-top: var(--space-xl);">
+  <a href="/tags/" class="post-back__link">&larr; Todos los tags</a>
+</nav>

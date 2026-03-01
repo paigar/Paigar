@@ -41,13 +41,13 @@
     </script>
 
     {#- CSS bundle -#}
-    {%- css %}{% include "public/css/reset.css" %}{% endcss %}
-    {%- css %}{% include "public/css/tokens.css" %}{% endcss %}
-    {%- css %}{% include "public/css/theme.css" %}{% endcss %}
-    {%- css %}{% include "public/fonts/fonts.css" %}{% endcss %}
-    {%- css %}{% include "public/css/layout.css" %}{% endcss %}
-    {%- css %}{% include "public/css/components.css" %}{% endcss %}
-    {%- css %}{% include "public/css/code.css" %}{% endcss %}
+    {%- css %}{% include "src/public/css/reset.css" %}{% endcss %}
+    {%- css %}{% include "src/public/css/tokens.css" %}{% endcss %}
+    {%- css %}{% include "src/public/css/theme.css" %}{% endcss %}
+    {%- css %}{% include "src/public/fonts/fonts.css" %}{% endcss %}
+    {%- css %}{% include "src/public/css/layout.css" %}{% endcss %}
+    {%- css %}{% include "src/public/css/components.css" %}{% endcss %}
+    {%- css %}{% include "src/public/css/code.css" %}{% endcss %}
 
     {#- Open Graph -#}
     <meta property="og:title" content="{{ title or metadata.title }}">
@@ -87,10 +87,10 @@
 
     {% include "partials/pie.njk" %}
 
-    {%- js %}{% include "public/js/theme-toggle.js" %}{% endjs %}
-    {%- js %}{% include "public/js/externallinks.js" %}{% endjs %}
-    {%- js %}{% include "public/js/reveal.js" %}{% endjs %}
-    {%- js %}{% include "public/js/nav-mobile.js" %}{% endjs %}
+    {%- js %}{% include "src/public/js/theme-toggle.js" %}{% endjs %}
+    {%- js %}{% include "src/public/js/externallinks.js" %}{% endjs %}
+    {%- js %}{% include "src/public/js/reveal.js" %}{% endjs %}
+    {%- js %}{% include "src/public/js/nav-mobile.js" %}{% endjs %}
     <script>
       {% getBundle "js" %}
     </script>

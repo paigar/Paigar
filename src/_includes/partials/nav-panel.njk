@@ -7,7 +7,7 @@
   </div>
   <div class="nav-panel__links">
     {%- for item in mainmenu.items %}
-      <a href="{{ item.url }}" class="nav-panel__link"{% if page.url == item.url %} aria-current="page"{% endif %}>
+      <a href="{{ item.url }}" class="nav-panel__link"{% if page.url == item.url or (item.url != "/" and page.url | startsWith(item.url)) %} aria-current="page"{% endif %}>
         {{ item.text }}
       </a>
     {%- endfor %}

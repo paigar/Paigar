@@ -6,7 +6,8 @@ permalink: /sobre-mi/
 ---
 
 <div class="seccion-header reveal">
-  <h1 class="seccion-header__title">Sobre mí</h1>
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> Sobre mí</h1>
+  <p class="seccion-header__description">Desarrollador web desde 1999. Construyo sitios con código limpio, sin frameworks innecesarios y con la web como plataforma.</p>
 </div>
 
 <div class="prosa reveal">
@@ -35,26 +36,28 @@ permalink: /sobre-mi/
   <p>Puedes escribirme a <strong>juanjo@paigar.es</strong>.</p>
 </div>
 
-<div class="sobre-herramientas ancho">
-  <h2 class="sobre-herramientas__title reveal">
-    <span class="home-section__marker">//</span> Caja de herramientas
-  </h2>
-  <p class="sobre-herramientas__desc reveal">Las herramientas que uso y por qué las he elegido. No es un stack de moda — es un stack de confianza.</p>
-  <div class="herramientas-grid reveal-stagger">
-    {%- for herramienta in herramientas %}
-      <div class="herramienta">
-        <h3 class="herramienta__nombre">
-          {%- if herramienta.url %}
-            <a href="{{ herramienta.url }}">{{ herramienta.nombre }}</a>
-          {%- else %}
-            {{ herramienta.nombre }}
-          {%- endif %}
-        </h3>
-        <p class="herramienta__categoria">{{ herramienta.categoria }}</p>
-        <p class="herramienta__descripcion">{{ herramienta.descripcion }}</p>
-        <p class="herramienta__desde">Desde {{ herramienta.desde }}</p>
-      </div>
-    {%- endfor %}
+<div class="sobre-herramientas-bg total">
+  <div class="sobre-herramientas ancho">
+    <h2 class="sobre-herramientas__title reveal">
+      <span class="seccion-header__marker">//</span> Caja de herramientas
+    </h2>
+    <p class="sobre-herramientas__desc reveal">Las herramientas que uso y por qué las he elegido. No es un stack de moda — es un stack de confianza.</p>
+    <div class="herramientas-grid reveal-stagger">
+      {%- for herramienta in herramientas %}
+        <div class="herramienta">
+          <h3 class="herramienta__nombre">
+            {%- if herramienta.url %}
+              <a href="{{ herramienta.url }}">{{ herramienta.nombre }}</a>
+            {%- else %}
+              {{ herramienta.nombre }}
+            {%- endif %}
+          </h3>
+          <p class="herramienta__categoria">{{ herramienta.categoria }}</p>
+          <p class="herramienta__descripcion">{{ herramienta.descripcion }}</p>
+          <p class="herramienta__desde">Desde {{ herramienta.desde }}</p>
+        </div>
+      {%- endfor %}
+    </div>
   </div>
 </div>
 
@@ -111,8 +114,16 @@ permalink: /sobre-mi/
   color: var(--color-texto-alt);
   display: block;
 }
-.sobre-herramientas {
+.sobre-herramientas-bg {
+  background-color: var(--color-fondo-alt);
+  border-top: 1px solid var(--color-borde-sutil);
+  border-bottom: 1px solid var(--color-borde-sutil);
   margin-top: var(--space-2xl);
+  padding: var(--space-xl) 1.25rem;
+}
+.sobre-herramientas {
+  max-width: var(--anchura-ancho);
+  margin-inline: auto;
 }
 .sobre-herramientas__title {
   font-size: var(--fs3);
