@@ -44,8 +44,10 @@ Nada de Sass, nada de Tailwind, nada de PostCSS. Variables CSS para los tokens d
 :root {
   --color-texto: #1a1b2e;
   --color-fondo: #fafaf8;
-  --color-acento: #f86624;
-  --fs0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --color-acento: #e05a1b;
+  --fs-base: clamp(1rem, 1.5vw, 1.15rem);
+  --fs1: calc(var(--fs-base) * 1.2);
+  --fs2: calc(var(--fs-base) * 1.45);
 }
 ```
 
@@ -94,7 +96,7 @@ La gestión de contenido es por ficheros: cada artículo es un `.md` con frontma
 
 **No tiene**: analytics, comentarios, newsletter, buscador, imágenes decorativas ni un solo kilobyte de JavaScript que no sea estrictamente necesario.
 
-La web completa, incluyendo CSS, JS y fuentes, pesa menos que una imagen hero típica. Y eso no es un accidente — es una decisión de diseño.
+La web completa — HTML con CSS inline, JavaScript vanilla y cero fuentes web (uso las del sistema) — pesa menos que una imagen hero típica. Y eso no es un accidente — es una decisión de diseño.
 
 ## Lo que queda
 

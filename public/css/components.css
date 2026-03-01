@@ -727,6 +727,27 @@
 .reveal-stagger.visible > *:nth-child(7) { transition-delay: 480ms; }
 .reveal-stagger.visible > *:nth-child(8) { transition-delay: 560ms; }
 
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+	.reveal,
+	.reveal-stagger > * {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.cabecera__cursor {
+		animation: none;
+		opacity: 0.8;
+	}
+
+	.postcard,
+	.herramienta,
+	.theme-toggle {
+		transition: none;
+	}
+}
+
 /* ── Selección de texto ── */
 ::selection {
 	background-color: var(--color-acento);

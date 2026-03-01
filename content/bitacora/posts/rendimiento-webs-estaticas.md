@@ -86,9 +86,9 @@ Lo mínimo que deberías hacer:
 
 ## JavaScript: menos es más
 
-El JavaScript de este sitio completo — toggle de tema, menú hamburguesa, animaciones de entrada, gestión de enlaces externos y cookie consent — pesa menos de lo que pesa una sola imagen de avatar en la mayoría de webs.
+El JavaScript propio de este sitio — toggle de tema, menú hamburguesa, animaciones de entrada y gestión de enlaces externos — va inline en el HTML y pesa menos de lo que pesa una sola imagen de avatar en la mayoría de webs. El cookie consent, que es la dependencia más pesada, se carga de forma diferida: su CSS y JavaScript no bloquean el primer renderizado ni forman parte del bundle principal.
 
-El truco no es minificar mejor ni usar tree-shaking más agresivo. El truco es no cargar lo que no necesitas. Cada `npm install` que evitas es rendimiento ganado.
+El truco no es minificar mejor ni usar tree-shaking más agresivo. El truco es no cargar lo que no necesitas en el momento crítico. Cada `npm install` que evitas es rendimiento ganado, y lo que no puedes evitar, lo difiere.
 
 ## Medir, no adivinar
 

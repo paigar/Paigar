@@ -26,24 +26,24 @@ En vez de usar colores directos en los componentes, todo pasa por custom propert
 ```css
 :root {
   --color-texto: #1a1b2e;
-  --color-texto-alt: #4a4a68;
+  --color-texto-alt: #5a5b6e;
   --color-fondo: #fafaf8;
   --color-fondo-alt: #f0f0ec;
-  --color-acento: #f86624;
-  --color-borde: #d4d4cc;
+  --color-acento: #e05a1b;
+  --color-borde: #d8d8d0;
 }
 
 [data-theme="dark"] {
-  --color-texto: #e0e0d8;
-  --color-texto-alt: #a0a098;
+  --color-texto: #dcdcd4;
+  --color-texto-alt: #8e8e86;
   --color-fondo: #111118;
-  --color-fondo-alt: #1c1c26;
+  --color-fondo-alt: #1a1a24;
   --color-acento: #f86624;
-  --color-borde: #2a2a3e;
+  --color-borde: #2a2a3a;
 }
 ```
 
-Lo importante: el acento no cambia entre temas. Es la identidad visual del sitio. Lo que cambia son los fondos, los textos y los bordes. Parece un detalle menor, pero mantener la coherencia del color de marca en ambos temas es lo que hace que el cambio se sienta natural.
+Lo importante: el acento siempre es naranja, pero se ajusta ligeramente entre temas. En tema claro uso un naranja más contenido (#e05a1b) para que no resulte agresivo sobre fondo blanco. En tema oscuro, un naranja más vivo (#f86624) que destaque sobre el fondo oscuro. Es el mismo tono, con diferente intensidad. Lo que cambia de forma más notable son los fondos, los textos y los bordes.
 
 ## Los componentes no saben de temas
 

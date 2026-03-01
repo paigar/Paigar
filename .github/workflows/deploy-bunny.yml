@@ -1,0 +1,41 @@
+name: Deploy to Bunny CDN
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to Bunny Storage
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.BUNNY_STORAGE_HOSTNAME }}
+          username: ${{ secrets.BUNNY_STORAGE_ZONE_NAME }}
+          password: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
+          protocol: ftps
+          local-dir: ./_site/
+          server-dir: /
+
+      - name: Purge Bunny CDN cache
+        run: |
+          curl -X POST "https://api.bunny.net/pullzone/${{ secrets.BUNNY_PULL_ZONE_ID }}/purgeCache" \
+               -H "AccessKey: ${{ secrets.BUNNY_API_KEY }}" \
+               -H "Content-Type: application/json"

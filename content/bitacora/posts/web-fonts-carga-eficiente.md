@@ -103,4 +103,17 @@ El texto aparece instantáneamente, sin descargas, sin FOUT, sin FOIT. Y las fue
 
 Para un blog o una web de documentación, esta es probablemente la mejor opción. La tipografía web aporta personalidad visual, pero esa personalidad tiene un coste en rendimiento. ¿El 90% de tus visitantes notará la diferencia entre Inter y la fuente del sistema? Probablemente no. ¿Notarán que la web carga medio segundo más lento? Probablemente sí.
 
+Es la opción que uso en este sitio. La pila tipográfica es:
+
+```css
+:root {
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace, monospace;
+}
+```
+
+No descargo ninguna fuente. Si el visitante tiene Inter instalada (muchos desarrolladores la tienen), la verá. Si no, verá Segoe UI en Windows, San Francisco en macOS, o la que su sistema ofrezca. Lo mismo con el código: JetBrains Mono si la tiene, y si no, la monoespaciada del sistema.
+
+El resultado es cero bytes de tipografía transferidos. El texto aparece instantáneamente. Y el aspecto visual es más que aceptable en cualquier sistema operativo.
+
 Es una decisión de diseño, no técnica. Y como toda decisión de diseño, merece ser tomada conscientemente.

@@ -58,21 +58,41 @@ No hace falta hacer esto a mano — hay calculadoras online. Pero entender la l�
 
 ## Mi escala tipográfica
 
-En este sitio uso una escala modular fluida definida con custom properties:
+En este sitio uso un enfoque ligeramente diferente al de aplicar `clamp()` a cada nivel por separado. Defino una sola variable base fluida y construyo el resto de la escala con multiplicadores:
 
 ```css
 :root {
-  --fs-1: clamp(0.833rem, 0.8rem + 0.17vw, 0.9rem);
-  --fs0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --fs1: clamp(1.125rem, 1.05rem + 0.38vw, 1.313rem);
-  --fs2: clamp(1.266rem, 1.15rem + 0.58vw, 1.563rem);
-  --fs3: clamp(1.424rem, 1.25rem + 0.87vw, 1.875rem);
-  --fs4: clamp(1.602rem, 1.35rem + 1.26vw, 2.25rem);
-  --fs5: clamp(1.802rem, 1.45rem + 1.76vw, 2.75rem);
+  --fs-base: clamp(1rem, 1.5vw, 1.15rem);
+  --fs-2: calc(var(--fs-base) * 0.75);
+  --fs-1: calc(var(--fs-base) * 0.85);
+  --fs0: var(--fs-base);
+  --fs1: calc(var(--fs-base) * 1.2);
+  --fs2: calc(var(--fs-base) * 1.45);
+  --fs3: calc(var(--fs-base) * 1.75);
+  --fs4: calc(var(--fs-base) * 2.1);
+  --fs5: calc(var(--fs-base) * 2.5);
+  --fs6: calc(var(--fs-base) * 3.2);
 }
 ```
 
-Cada nivel de la escala crece proporcionalmente más que el anterior. En móvil, la diferencia entre un `h1` y un `h2` es sutil. En pantalla grande, es mucho más pronunciada. Esto es intencional: en pantallas pequeñas no puedes permitirte titulares enormes, pero en pantallas grandes quieres más contraste visual.
+La ventaja de este enfoque es que toda la escala se mueve junta. Si cambio el `clamp()` de la base, todos los tamaños se reajustan proporcionalmente. No tengo que recalcular siete valores diferentes.
+
+Además, para móvil uso una media query que reduce los multiplicadores de los niveles grandes, porque en pantallas pequeñas el contraste entre tamaños tiene que ser más sutil:
+
+```css
+@media screen and (max-width: 45rem) {
+  :root {
+    --fs1: calc(var(--fs-base) * 1.15);
+    --fs2: calc(var(--fs-base) * 1.3);
+    --fs3: calc(var(--fs-base) * 1.5);
+    --fs4: calc(var(--fs-base) * 1.7);
+    --fs5: calc(var(--fs-base) * 2);
+    --fs6: calc(var(--fs-base) * 2.5);
+  }
+}
+```
+
+Sí, estoy usando una media query — justo lo que este artículo pretende evitar. Pero el `clamp()` de la base se encarga de la fluidez continua, y la media query solo ajusta las proporciones de la escala en viewports estrechos. Es un híbrido pragmático: la transición es suave gracias a la base fluida, y los ratios se ajustan cuando realmente hace falta.
 
 ## Tipografía fluida más allá del font-size
 
