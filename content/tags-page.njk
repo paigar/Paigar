@@ -1,0 +1,50 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - nav
+    - bitacora
+    - reflexiones
+layout: layouts/base.njk
+eleventyComputed:
+  title: "Tag: {{ tag }}"
+  description: "Artículos etiquetados con « {{ tag }} »."
+  permalink: "/tags/{{ tag | slugify }}/"
+---
+
+<div class="prosa">
+  <h1>{{ tag }}</h1>
+  <p>{{ collections[tag] | length }} artículo{{ "s" if collections[tag] | length != 1 }} con esta etiqueta.</p>
+</div>
+
+{%- set posts = collections[tag] | ordenarPorFecha %}
+{%- if posts.length > 0 %}
+  <div class="posts-list ancho">
+    {%- for post in posts %}
+      {% include "partials/postcard.njk" %}
+    {%- endfor %}
+  </div>
+{%- endif %}
+
+<div class="tags-back">
+  <a href="/tags/">← Todos los tags</a>
+</div>
+
+{%- css %}
+.tags-back {
+  margin-top: var(--space-l);
+}
+
+.tags-back a {
+  color: var(--color-acento);
+  text-decoration: none;
+  font-size: var(--fs-1);
+}
+
+.tags-back a:hover {
+  text-decoration: underline;
+}
+{% endcss %}
