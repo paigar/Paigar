@@ -445,4 +445,30 @@ description: "Web personal de Juanjo Marcos. Desarrollo web, código y reflexion
   color: var(--color-texto-alt);
   font-style: italic;
 }
+
+/* ── Reduced motion: mostrar todo sin animaciones ── */
+@media (prefers-reduced-motion: reduce) {
+  .monologue__line,
+  .monologue__scanlines,
+  .hero__terminal,
+  .terminal__line,
+  .hero__links,
+  .hero__glow {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ── Sin JS: mostrar todo sin animaciones ── */
+html:not(.js) .monologue__line,
+html:not(.js) .monologue__scanlines,
+html:not(.js) .hero__terminal,
+html:not(.js) .terminal__line,
+html:not(.js) .hero__links {
+  opacity: 1;
+  animation: none;
+  transform: none;
+}
 {% endcss %}

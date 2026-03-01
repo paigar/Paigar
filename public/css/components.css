@@ -647,11 +647,35 @@
 /* ── Pie de página ── */
 .pie {
 	border-top: 1px solid var(--color-borde);
-	padding-top: var(--space-l);
-	padding-bottom: var(--space-l);
+	padding-top: var(--space-xl);
+	padding-bottom: var(--space-xl);
 	color: var(--color-texto-alt);
 	font-size: var(--fs-1);
 	transition: border-color var(--transition-normal);
+}
+
+.pie__inner {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	gap: var(--space-xl);
+}
+
+.pie__heading {
+	font-family: var(--font-mono);
+	font-size: var(--fs-2);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--color-acento);
+	margin-bottom: var(--space-s);
+}
+
+.pie__menu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.4em;
 }
 
 .pie a {
@@ -664,10 +688,36 @@
 	color: var(--color-acento);
 }
 
-.pie__links {
-	display: flex;
-	gap: var(--space-m);
-	flex-wrap: wrap;
+.pie__brand {
+	font-family: var(--font-mono);
+	font-size: var(--fs0);
+	font-weight: 700;
+	color: var(--color-texto);
+	margin-bottom: var(--space-xs);
+}
+
+.pie__prompt {
+	color: var(--color-acento);
+}
+
+.pie__copy {
+	margin-bottom: 0.3em;
+}
+
+.pie__tech {
+	margin-bottom: 0.6em;
+}
+
+.pie__versions {
+	font-family: var(--font-mono);
+	font-size: var(--fs-2);
+}
+
+@media screen and (max-width: 40rem) {
+	.pie__inner {
+		grid-template-columns: 1fr;
+		gap: var(--space-l);
+	}
 }
 
 /* ── Encabezado de sección ── */
@@ -693,6 +743,7 @@
 .header-anchor {
 	display: none;
 }
+
 
 /* ── Animaciones de entrada (scroll-triggered) ── */
 /* Solo ocultar si JS está disponible — evita contenido invisible si JS falla */

@@ -1,11 +1,35 @@
 <footer class="limites pie">
-  <div class="flex between ancho" style="flex-wrap: wrap;">
-    <p>&copy; {% currentYear %} Juanjo Marcos. Hecho con <a href="https://www.11ty.dev/">Eleventy</a>.</p>
-    <div class="pie__links">
-      <a href="/aviso-legal/">Aviso legal</a>
-      <a href="/politica-de-privacidad/">Privacidad</a>
-      <a href="/uso-de-cookies/">Cookies</a>
-      <a href="/versiones/">Versiones anteriores</a>
+  <div class="pie__inner ancho">
+    <div class="pie__nav">
+      <p class="pie__heading">Navegación</p>
+      <ul class="pie__menu">
+        {%- for item in mainmenu.items %}
+          <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.text }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div class="pie__elsewhere">
+      <p class="pie__heading">También en</p>
+      <ul class="pie__menu">
+        <li><a href="https://www.bilbonauta.com">Bilbonauta</a></li>
+        <li><a href="https://www.idenautas.com">Idenautas</a></li>
+        <li><a href="https://www.paigar.eu">paigar.eu</a></li>
+        <li><a href="https://www.instagram.com/paigar">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="pie__legal">
+      <p class="pie__heading">Legal</p>
+      <ul class="pie__menu">
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/politica-de-privacidad/">Privacidad</a></li>
+        <li><a href="/uso-de-cookies/">Cookies</a></li>
+      </ul>
+    </div>
+    <div class="pie__info">
+      <p class="pie__brand"><span class="pie__prompt">&gt;</span> paigar</p>
+      <p class="pie__copy">&copy; {% currentYear %} Juanjo Marcos</p>
+      <p class="pie__tech">Hecho con <a href="https://www.11ty.dev/">Eleventy</a></p>
+      <a href="/versiones/" class="pie__versions">Versiones anteriores</a>
     </div>
   </div>
 </footer>

@@ -74,7 +74,7 @@
       {% getBundle "css" %}
     </style>
   </head>
-  <body>
+  <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
     <a href="#skip" class="visually-hidden">Saltar al contenido principal</a>
 
     {% include 'partials/cabecera.njk' %}
