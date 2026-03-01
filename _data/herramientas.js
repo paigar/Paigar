@@ -56,10 +56,26 @@ module.exports = [
 		desde: 2015,
 	},
 	{
+		nombre: "GIMP",
+		categoria: "Edición de imagen",
+		descripcion:
+			"Mi editor de imágenes. Software libre, potente y más que suficiente para el trabajo gráfico que necesito en la web.",
+		url: "https://www.gimp.org/",
+		desde: 2020,
+	},
+	{
+		nombre: "XAMPP",
+		categoria: "Servidor local",
+		descripcion:
+			"Para los proyectos que necesitan PHP y bases de datos. Apache, MySQL y PHP listos para usar en local sin complicaciones.",
+		url: "https://www.apachefriends.org/",
+		desde: 2010,
+	},
+	{
 		nombre: "Windows",
 		categoria: "Sistema",
 		descripcion:
-			"Mi sistema operativo de trabajo. Con la terminal integrada y WSL disponible cuando lo necesito, cubre todo lo que un desarrollo web requiere.",
+			"Mi sistema operativo de trabajo. Con la terminal integrada y Node.js, cubre todo lo que un desarrollo web requiere.",
 		url: null,
 		desde: 1995,
 	},

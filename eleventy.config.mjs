@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { DateTime } from "luxon";
 import markdownItAnchor from "markdown-it-anchor";
 import pluginRss from "@11ty/eleventy-plugin-rss";
@@ -5,6 +7,7 @@ import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginBundle from "@11ty/eleventy-plugin-bundle";
 import pluginNavigation from "@11ty/eleventy-navigation";
 import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import Image from "@11ty/eleventy-img";
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
@@ -79,6 +82,31 @@ export default function (eleventyConfig) {
 		);
 	});
 
+	// Filtro para partir títulos en líneas (para imágenes OG en SVG)
+	eleventyConfig.addFilter("splitlines", function (input) {
+		const parts = input.split(" ");
+		const lines = parts.reduce(function (prev, current) {
+			if (!prev.length) {
+				return [current];
+			}
+			const lastLine = prev[prev.length - 1];
+			if (lastLine.length + 1 + current.length > 36) {
+				return [...prev, current];
+			}
+			prev[prev.length - 1] = lastLine + " " + current;
+			return prev;
+		}, []);
+		return lines;
+	});
+
+	// Colección combinada de posts (bitácora + reflexiones)
+	eleventyConfig.addCollection("posts", function (collectionApi) {
+		return collectionApi
+			.getFilteredByTag("bitacora")
+			.concat(collectionApi.getFilteredByTag("reflexiones"))
+			.sort((a, b) => b.date - a.date);
+	});
+
 	// Markdown config
 	eleventyConfig.amendLibrary("md", (mdLib) => {
 		mdLib.use(markdownItAnchor, {
@@ -100,6 +128,37 @@ export default function (eleventyConfig) {
 
 	eleventyConfig.addShortcode("currentYear", () => {
 		return new Date().getFullYear().toString();
+	});
+
+	// Convertir SVG a PNG después del build (imágenes Open Graph)
+	eleventyConfig.on("eleventy.after", async () => {
+		const ogDir = "_site/og-images/";
+
+		if (!fs.existsSync(ogDir)) {
+			return;
+		}
+
+		const files = fs.readdirSync(ogDir);
+		const svgFiles = files.filter((f) => f.endsWith(".svg"));
+
+		for (const filename of svgFiles) {
+			const inputPath = path.join(ogDir, filename);
+			const outputName = filename.replace(".svg", "");
+
+			await Image(inputPath, {
+				formats: ["png"],
+				widths: [1200],
+				outputDir: ogDir,
+				filenameFormat: function () {
+					return `${outputName}.png`;
+				},
+			});
+		}
+
+		// Eliminar SVG originales
+		for (const filename of svgFiles) {
+			fs.unlinkSync(path.join(ogDir, filename));
+		}
 	});
 
 	return {
