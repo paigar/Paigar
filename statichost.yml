@@ -1,3 +1,0 @@
-image: node:22
-command: npm install && npm run build
-public: _site

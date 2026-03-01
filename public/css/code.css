@@ -1,0 +1,134 @@
+/* ── Código inline ── */
+:not(pre) > code {
+	font-family: var(--font-mono);
+	font-size: 0.88em;
+	background-color: var(--color-acento-suave);
+	color: var(--color-acento);
+	padding: 0.12em 0.4em;
+	border-radius: var(--radius-s);
+	border: 1px solid transparent;
+	transition: background-color var(--transition-normal),
+		color var(--transition-normal);
+}
+
+/* ── Bloques de código — estética terminal fósforo naranja ── */
+pre[class*="language-"] {
+	position: relative;
+	font-family: var(--font-mono);
+	font-size: var(--fs-1);
+	line-height: 1.7;
+	background-color: var(--color-codigo-fondo);
+	color: var(--color-codigo-texto);
+	border: 1px solid var(--color-codigo-borde);
+	border-radius: var(--radius-l);
+	padding: var(--space-m);
+	padding-top: 2.8rem;
+	overflow-x: auto;
+	margin-bottom: var(--space-m);
+	tab-size: 2;
+	/* Scanlines CRT sutiles */
+	background-image: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.06) 2px,
+		rgba(0, 0, 0, 0.06) 4px
+	);
+	/* Sombra con glow naranja sutil */
+	box-shadow:
+		0 4px 24px rgba(0, 0, 0, 0.15),
+		0 0 40px rgba(248, 102, 36, 0.06),
+		inset 0 1px 0 rgba(255, 255, 255, 0.03);
+	transition: box-shadow var(--transition-normal);
+}
+
+/* Barra decorativa superior tipo ventana de terminal */
+pre[class*="language-"]::before {
+	content: "● ● ●";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 0.5rem 1rem;
+	font-size: 0.65rem;
+	letter-spacing: 0.3em;
+	color: var(--color-texto-alt);
+	opacity: 0.35;
+	border-bottom: 1px solid var(--color-codigo-borde);
+	background-color: rgba(255, 255, 255, 0.02);
+}
+
+pre[class*="language-"]:hover {
+	box-shadow:
+		0 8px 32px rgba(0, 0, 0, 0.2),
+		0 0 60px rgba(248, 102, 36, 0.08),
+		inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+pre[class*="language-"]:focus {
+	outline: 2px solid var(--color-acento);
+	outline-offset: 2px;
+}
+
+/* ── Syntax highlighting — tema fósforo ── */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #6a6a78;
+	font-style: italic;
+}
+
+.token.punctuation {
+	color: #8a8a98;
+}
+
+/* Naranjas/rojos — el fósforo */
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f78c6c;
+}
+
+/* Verdes — strings */
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #c3e88d;
+}
+
+/* Operadores */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #ffcb6b;
+}
+
+/* Keywords — azules */
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #82aaff;
+}
+
+/* Funciones — violetas */
+.token.function,
+.token.class-name {
+	color: #c792ea;
+}
+
+/* Variables — rosas */
+.token.regex,
+.token.important,
+.token.variable {
+	color: #f07178;
+}

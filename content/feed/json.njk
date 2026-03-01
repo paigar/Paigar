@@ -1,0 +1,40 @@
+---json
+{
+	"permalink": "feed/feed.json",
+	"eleventyExcludeFromCollections": true,
+	"metadata": {
+		"title": "Paigar",
+		"subtitle": "Web personal de Juanjo Marcos — desarrollo web, código y reflexiones.",
+		"language": "es",
+		"url": "https://www.paigar.es/",
+		"author": {
+			"name": "Juanjo Marcos",
+			"email": "juanjo@paigar.es"
+		}
+	}
+}
+---
+{
+	"version": "https://jsonfeed.org/version/1.1",
+	"title": "{{ metadata.title }}",
+	"language": "{{ metadata.language }}",
+	"home_page_url": "{{ metadata.url }}",
+	"feed_url": "{{ metadata.url }}{{ page.url }}",
+	"description": "{{ metadata.subtitle }}",
+	"author": {
+		"name": "{{ metadata.author.name }}",
+		"url": "{{ metadata.url }}"
+	},
+	"items": [
+		{%- for post in collections.bitacora | reverse | head(20) %}
+		{%- set absolutePostUrl = post.url | htmlBaseUrl(metadata.url) %}
+		{
+			"id": "{{ absolutePostUrl }}",
+			"url": "{{ absolutePostUrl }}",
+			"title": "{{ post.data.title }}",
+			"content_html": {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | dump | safe }},
+			"date_published": "{{ post.date | dateToRfc3339 }}"
+		}{% if not loop.last %},{% endif %}
+		{%- endfor %}
+	]
+}

@@ -1,0 +1,120 @@
+---
+layout: layouts/base.njk
+title: "Versiones anteriores"
+description: "Archivo de versiones anteriores de paigar.es. Cada etapa del sitio refleja un momento distinto de mi trayectoria como desarrollador."
+permalink: /versiones/
+eleventyExcludeFromCollections: true
+---
+
+<div class="seccion-header reveal">
+  <h1 class="seccion-header__title">Versiones anteriores</h1>
+  <p class="seccion-header__description">Cada versión de este sitio refleja un momento distinto de mi trayectoria como desarrollador. Aquí queda constancia de las que puedo conservar.</p>
+</div>
+
+<div class="versiones reveal-stagger">
+
+  <div class="version version--actual">
+    <div class="version__badge">actual</div>
+    <h2 class="version__title">v3.0 <span class="version__year">2026</span></h2>
+    <p class="version__stack">Eleventy · Nunjucks · CSS puro · JavaScript vanilla</p>
+    <p class="version__desc">Reconstrucción completa como bitácora personal de desarrollo. Adiós a la web comercial — para eso está Idenautas. Diseño tipográfico, tema claro/oscuro, sin frameworks ni dependencias innecesarias.</p>
+    <p class="version__link-text">Estás aquí.</p>
+  </div>
+
+  <div class="version">
+    <h2 class="version__title">v2.0 <span class="version__year">2020–2025</span></h2>
+    <p class="version__stack">Eleventy · Nunjucks · CSS · Formulario de contacto</p>
+    <p class="version__desc">Mi web personal, aunque con un enfoque más comercial. Una sola página con secciones de servicios, portfolio y contacto. Mi primer proyecto con Eleventy, que me convenció de que los generadores estáticos eran el camino.</p>
+    <a href="/v2/" target="_blank" rel="noopener" class="version__link">Visitar la v2.0 →</a>
+  </div>
+
+  <div class="version version--perdida">
+    <h2 class="version__title">v1.0 <span class="version__year">~2010–2019</span></h2>
+    <p class="version__stack">Joomla · PHP · MySQL</p>
+    <p class="version__desc">La primera versión profesional de paigar.es, basada en Joomla. Un CMS potente pero pesado para lo que necesitaba. Se perdió en algún momento entre migraciones de servidor y cambios de rumbo. Como lágrimas en la lluvia.</p>
+    <p class="version__link-text version__perdida-note">Perdida en la red.</p>
+  </div>
+
+</div>
+
+{%- css %}
+.versiones {
+  display: grid;
+  gap: var(--space-l);
+  margin-top: var(--space-l);
+}
+.version {
+  padding: var(--space-l);
+  border: 1px solid var(--color-borde-sutil);
+  border-radius: var(--radius-l);
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+.version:hover {
+  border-color: var(--color-acento);
+}
+.version--actual {
+  border-color: var(--color-acento);
+  background: color-mix(in srgb, var(--color-acento) 5%, transparent);
+}
+.version__badge {
+  position: absolute;
+  top: var(--space-s);
+  right: var(--space-s);
+  font-size: var(--fs-1);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-acento);
+  background: color-mix(in srgb, var(--color-acento) 12%, transparent);
+  padding: 0.15em 0.6em;
+  border-radius: var(--radius-s);
+}
+.version__title {
+  font-size: var(--fs2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2xs);
+}
+.version__year {
+  font-weight: 400;
+  color: var(--color-texto-alt);
+  font-size: var(--fs0);
+}
+.version__stack {
+  font-size: var(--fs-1);
+  color: var(--color-acento);
+  font-family: var(--font-mono);
+  margin-bottom: var(--space-s);
+}
+.version__desc {
+  color: var(--color-texto-alt);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+.version__link {
+  display: inline-block;
+  margin-top: var(--space-s);
+  font-weight: 600;
+  color: var(--color-acento);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.version__link:hover {
+  color: var(--color-acento-hover);
+  text-decoration: underline;
+}
+.version__link-text {
+  margin-top: var(--space-s);
+  font-size: var(--fs-1);
+  color: var(--color-texto-alt);
+  font-style: italic;
+}
+.version--perdida {
+  opacity: 0.7;
+}
+.version__perdida-note {
+  font-family: var(--font-mono);
+  font-style: normal;
+}
+{% endcss %}

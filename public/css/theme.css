@@ -1,0 +1,57 @@
+/* ── Tema claro (por defecto) ── */
+:root {
+	--color-texto: #1a1b2e;
+	--color-texto-alt: #5a5b6e;
+	--color-fondo: #fafaf8;
+	--color-fondo-alt: #f0f0ec;
+	--color-fondo-sutil: #e8e8e2;
+	--color-acento: #e05a1b;
+	--color-acento-hover: #f86624;
+	--color-acento-suave: rgba(248, 102, 36, 0.1);
+	--color-acento-glow: rgba(248, 102, 36, 0.15);
+	--color-borde: #d8d8d0;
+	--color-borde-sutil: #e4e4dc;
+	--color-codigo-fondo: #1c1c28;
+	--color-codigo-texto: #f0cda0;
+	--color-codigo-borde: #2a2a3a;
+	--color-link: var(--color-acento);
+	--color-link-hover: var(--color-acento-hover);
+	--color-sombra: rgba(0, 0, 0, 0.08);
+	--color-sombra-acento: rgba(248, 102, 36, 0.12);
+	--color-gradiente-inicio: #fafaf8;
+	--color-gradiente-fin: #f4f0ea;
+}
+
+/* ── Tema oscuro ── */
+[data-theme="dark"] {
+	--color-texto: #dcdcd4;
+	--color-texto-alt: #8e8e86;
+	--color-fondo: #111118;
+	--color-fondo-alt: #1a1a24;
+	--color-fondo-sutil: #22222e;
+	--color-acento: #f86624;
+	--color-acento-hover: #ff8a50;
+	--color-acento-suave: rgba(248, 102, 36, 0.12);
+	--color-acento-glow: rgba(248, 102, 36, 0.2);
+	--color-borde: #2a2a3a;
+	--color-borde-sutil: #222230;
+	--color-codigo-fondo: #0d0d14;
+	--color-codigo-texto: #f0cda0;
+	--color-codigo-borde: #2a2a3a;
+	--color-link: var(--color-acento);
+	--color-link-hover: var(--color-acento-hover);
+	--color-sombra: rgba(0, 0, 0, 0.4);
+	--color-sombra-acento: rgba(248, 102, 36, 0.15);
+	--color-gradiente-inicio: #111118;
+	--color-gradiente-fin: #14141e;
+}
+
+/* ── Aplicación del tema ── */
+body {
+	color: var(--color-texto);
+	background-color: var(--color-fondo);
+	font-family: var(--font-body);
+	font-size: var(--fs0);
+	transition: color var(--transition-normal),
+		background-color var(--transition-normal);
+}

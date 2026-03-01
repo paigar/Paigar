@@ -1,0 +1,448 @@
+---
+layout: layouts/base.njk
+title: "Paigar — Juanjo Marcos"
+description: "Web personal de Juanjo Marcos. Desarrollo web, código y reflexiones sobre el oficio."
+---
+
+<section class="hero total">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__glow"></div>
+  </div>
+  <div class="hero__content">
+    <div class="hero__monologue">
+      <blockquote class="monologue">
+        <p class="monologue__line monologue__line--1">Yo&hellip; he visto cosas que vosotros no creeríais:</p>
+        <p class="monologue__line monologue__line--2">Diseñar páginas web usando Frontpage.</p>
+        <p class="monologue__line monologue__line--3">He visto GIFs animados colonizar sitios completos más allá de los dominios de Geocities.</p>
+        <p class="monologue__line monologue__line--4">Todos esos momentos se perderán&hellip; en el tiempo&hellip;</p>
+        <p class="monologue__line monologue__line--5">como cookies en la red.</p>
+        <p class="monologue__line monologue__line--6 monologue__line--final">Es hora de innovar.</p>
+      </blockquote>
+      <div class="monologue__scanlines" aria-hidden="true"></div>
+    </div>
+    <div class="hero__aside">
+      <div class="hero__terminal">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red"></span>
+          <span class="terminal__dot terminal__dot--yellow"></span>
+          <span class="terminal__dot terminal__dot--green"></span>
+          <span class="terminal__title">paigar.es</span>
+        </div>
+        <div class="terminal__body">
+          <p class="terminal__line terminal__line--1">
+            <span class="terminal__prompt">~</span> <span class="terminal__cmd">whoami</span>
+          </p>
+          <p class="terminal__line terminal__line--2">
+            <span class="terminal__output">Juanjo Marcos</span>
+          </p>
+          <p class="terminal__line terminal__line--3">
+            <span class="terminal__prompt">~</span> <span class="terminal__cmd">cat oficio.txt</span>
+          </p>
+          <p class="terminal__line terminal__line--4">
+            <span class="terminal__output">Desarrollador web · Bilbao · Desde 1999</span>
+          </p>
+          <p class="terminal__line terminal__line--5">
+            <span class="terminal__prompt">~</span><span class="terminal__cursor"></span>
+          </p>
+        </div>
+      </div>
+      <div class="hero__links">
+        <a href="/bitacora/" class="hero__cta">Leer la bitácora</a>
+        <a href="/sobre-mi/" class="hero__cta hero__cta--ghost">Sobre mí</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-section ancho">
+  <h2 class="home-section__title">
+    <span class="home-section__marker">//</span> Últimas entradas
+  </h2>
+
+  {%- set bitacoraEntries = collections.bitacora | ordenarPorFecha | head(3) %}
+  {%- set reflexionesEntries = collections.reflexiones | ordenarPorFecha | head(3) %}
+  {%- set allEntries = [] %}
+  {%- for post in bitacoraEntries %}
+    {%- set allEntries = (allEntries.push(post), allEntries) %}
+  {%- endfor %}
+  {%- for post in reflexionesEntries %}
+    {%- set allEntries = (allEntries.push(post), allEntries) %}
+  {%- endfor %}
+
+  {%- if allEntries.length > 0 %}
+    <div class="posts-list">
+      {%- for post in allEntries | ordenarPorFecha | head(4) %}
+        {% include "partials/postcard.njk" %}
+      {%- endfor %}
+    </div>
+  {%- else %}
+    <p class="home-empty">Próximamente.</p>
+  {%- endif %}
+</section>
+
+<section class="home-section ancho">
+  <h2 class="home-section__title">
+    <span class="home-section__marker">//</span> Sobre este sitio
+  </h2>
+  <div class="prosa">
+    <p>Paigar.es es mi espacio personal como desarrollador. Si <a href="https://www.bilbonauta.com">Bilbonauta</a> es donde escribo sobre viajes, este es el lugar donde hablo sobre código, herramientas y el oficio de construir para la web.</p>
+    <p>No es una web comercial — para eso está <a href="https://www.idenautas.com">Idenautas</a>, mi empresa. Aquí simplemente comparto lo que aprendo, lo que opino y lo que me entusiasma de este trabajo después de dos décadas.</p>
+  </div>
+</section>
+
+{%- css %}
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--altura-cabecera));
+  min-height: calc(100svh - var(--altura-cabecera));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: var(--space-xl) var(--space-m);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Cuadrícula sutil de fondo */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--color-borde-sutil) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-borde-sutil) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 70%);
+  opacity: 0.5;
+}
+
+/* Resplandor naranja de fondo */
+.hero__glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: min(700px, 90vw);
+  height: min(500px, 60vh);
+  background: radial-gradient(ellipse, var(--color-acento-glow) 0%, transparent 70%);
+  filter: blur(60px);
+  opacity: 0.8;
+  animation: glowPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0%   { opacity: 0.6; transform: translate(-50%, -30%) scale(1); }
+  100% { opacity: 1;   transform: translate(-50%, -30%) scale(1.08); }
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-xl);
+  align-items: center;
+  max-width: var(--anchura-ancho);
+  width: 100%;
+}
+
+@media screen and (max-width: 55rem) {
+  .hero__content {
+    grid-template-columns: 1fr;
+  }
+  .hero__aside {
+    max-width: 28rem;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* ── Monólogo (Blade Runner) ── */
+.hero__monologue {
+  position: relative;
+}
+
+.monologue {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.monologue__line {
+  font-size: var(--fs3);
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--color-texto-alt);
+  margin-bottom: 0.2em;
+  opacity: 0;
+  animation: monologueFade 0.8s ease forwards;
+}
+
+.monologue__line--1 { animation-delay: 0.4s; }
+.monologue__line--2 {
+  animation-delay: 1.2s;
+  color: var(--color-texto);
+  font-weight: 400;
+}
+.monologue__line--3 {
+  animation-delay: 2.2s;
+  color: var(--color-texto);
+  font-weight: 400;
+}
+.monologue__line--4 {
+  animation-delay: 3.4s;
+  margin-top: 0.6em;
+}
+.monologue__line--5 {
+  animation-delay: 4.4s;
+  font-style: italic;
+  margin-bottom: 0.8em;
+}
+.monologue__line--final {
+  animation-delay: 5.6s;
+  font-size: var(--fs4);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--color-acento);
+  font-style: normal;
+  background: linear-gradient(135deg, var(--color-acento), var(--color-acento-hover));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes monologueFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Scanlines sobre el monólogo — efecto pantalla CRT sutil */
+.monologue__scanlines {
+  position: absolute;
+  inset: -1rem;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(248, 102, 36, 0.015) 3px,
+    rgba(248, 102, 36, 0.015) 6px
+  );
+  border-radius: var(--radius-m);
+  opacity: 0;
+  animation: scanlinesFade 1s ease 5.5s forwards;
+}
+
+@keyframes scanlinesFade {
+  to { opacity: 1; }
+}
+
+@media screen and (max-width: 55rem) {
+  .monologue__line {
+    font-size: var(--fs2);
+  }
+  .monologue__line--final {
+    font-size: var(--fs3);
+  }
+}
+
+/* ── Hero aside (terminal + CTAs) ── */
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+}
+
+/* ── Terminal ── */
+.hero__terminal {
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  background-color: var(--color-codigo-fondo);
+  border: 1px solid var(--color-codigo-borde);
+  box-shadow:
+    0 4px 24px var(--color-sombra),
+    0 0 60px var(--color-sombra-acento),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  font-family: var(--font-mono);
+  font-size: var(--fs-1);
+  line-height: 1.8;
+  transition: box-shadow var(--transition-normal);
+  opacity: 0;
+  animation: terminalAppear 0.6s ease 1s forwards;
+}
+
+@keyframes terminalAppear {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero__terminal:hover {
+  box-shadow:
+    0 8px 40px var(--color-sombra),
+    0 0 80px var(--color-sombra-acento),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  background-color: rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--color-codigo-borde);
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.terminal__dot--red    { background: #ff5f57; }
+.terminal__dot--yellow { background: #febc2e; }
+.terminal__dot--green  { background: #28c840; }
+
+.terminal__title {
+  margin-left: auto;
+  font-size: var(--fs-2);
+  color: var(--color-texto-alt);
+  opacity: 0.5;
+}
+
+.terminal__body {
+  padding: 1rem 1.2rem;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+}
+
+.terminal__prompt {
+  color: var(--color-acento);
+  font-weight: 700;
+}
+
+.terminal__cmd {
+  color: #dcdcd4;
+}
+
+.terminal__output {
+  color: var(--color-codigo-texto);
+}
+
+.terminal__cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  background-color: var(--color-acento);
+  vertical-align: text-bottom;
+  margin-left: 0.3em;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* Líneas del terminal — aparecen con delay propio */
+.terminal__line {
+  opacity: 0;
+  animation: lineAppear 0.3s ease forwards;
+}
+.terminal__line--1 { animation-delay: 1.5s; }
+.terminal__line--2 { animation-delay: 2.0s; }
+.terminal__line--3 { animation-delay: 2.8s; }
+.terminal__line--4 { animation-delay: 3.3s; }
+.terminal__line--5 { animation-delay: 4.0s; }
+
+@keyframes lineAppear {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Hero links ── */
+.hero__links {
+  display: flex;
+  gap: var(--space-s);
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: terminalAppear 0.5s ease 4.5s forwards;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-1);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.65em 1.3em;
+  border-radius: var(--radius-m);
+  background-color: var(--color-acento);
+  color: #fff;
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.hero__cta:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--color-sombra-acento);
+}
+
+.hero__cta--ghost {
+  background-color: transparent;
+  color: var(--color-texto);
+  border: 1px solid var(--color-borde);
+}
+
+.hero__cta--ghost:hover {
+  background-color: var(--color-fondo-alt);
+  border-color: var(--color-acento);
+  color: var(--color-acento);
+  box-shadow: none;
+}
+
+/* ── Home sections ── */
+.home-section {
+  margin-top: var(--space-2xl);
+}
+.home-section__title {
+  font-size: var(--fs2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-m);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-borde);
+}
+.home-section__marker {
+  color: var(--color-acento);
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-right: 0.3em;
+}
+.home-empty {
+  color: var(--color-texto-alt);
+  font-style: italic;
+}
+{% endcss %}

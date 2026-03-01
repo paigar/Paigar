@@ -1,0 +1,12 @@
+/* TEAM */
+Developer: Juanjo Marcos
+Site: https://www.paigar.es
+Contact: juanjo@paigar.es
+Location: Bilbao, Spain
+
+/* SITE */
+Last update: 2026-02-28
+Language: Spanish
+Standards: HTML5, CSS3
+Components: Eleventy, Nunjucks, JavaScript vanilla
+Software: VS Code, Firefox Developer Edition

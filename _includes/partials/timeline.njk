@@ -1,0 +1,12 @@
+<div class="timeline reveal-stagger">
+  {%- for item in items %}
+    <div class="timeline__item">
+      <div class="timeline__year">{{ item.year }}</div>
+      <h3 class="timeline__title">{{ item.title }}</h3>
+      <p class="timeline__description">{{ item.description }}</p>
+      {%- if item.link %}
+        <a href="{{ item.link }}" class="timeline__link">{{ item.linkText or "Ver más" }}</a>
+      {%- endif %}
+    </div>
+  {%- endfor %}
+</div>

@@ -1,0 +1,18 @@
+<article class="postcard">
+  <a href="{{ post.url }}" class="postcard__link">
+    <h3 class="postcard__title">{{ post.data.title }}</h3>
+    <p class="postcard__meta">
+      <time datetime="{{ post.data.date | htmlDateString }}">{{ post.data.date | readableDate }}</time>
+    </p>
+    {% if post.data.description %}
+      <p class="postcard__description">{{ post.data.description }}</p>
+    {% endif %}
+  </a>
+  {% if post.data.tags %}
+    <div class="postcard__tags">
+      {%- for tag in post.data.tags | filterTagList %}
+        <span class="tag">{{ tag }}</span>
+      {%- endfor %}
+    </div>
+  {% endif %}
+</article>

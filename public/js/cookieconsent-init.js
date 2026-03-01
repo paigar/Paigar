@@ -1,82 +1,42 @@
 var cc = initCookieConsent();
 
-// run plugin with config object
 cc.run({
 	current_lang: "es",
-	autoclear_cookies: true, // default: false
-	cookie_name: "cc_cookie", // default: 'cc_cookie'
-	cookie_expiration: 365, // default: 182
-	force_consent: true, // default: false
-	autorun: "{{ page.url }}" !== "/uso-de-cookies/",
-
-	// page_scripts: false,                         // default: false
-	// auto_language: null,                     // default: null; could also be 'browser' or 'document'
-	// autorun: true,                           // default: true
-	// delay: 0,                                // default: 0
-	// hide_from_bots: false,                   // default: false
-	// remove_cookie_tables: false              // default: false
-	// cookie_domain: location.hostname,        // default: current domain
-	// cookie_path: '/',                        // default: root
-	// cookie_same_site: 'Lax',
-	// use_rfc_cookie: false,                   // default: false
-	// revision: 0,                             // default: 0
+	autoclear_cookies: true,
+	cookie_name: "cc_cookie",
+	cookie_expiration: 365,
+	force_consent: true,
+	autorun: window.location.pathname !== "/uso-de-cookies/",
 
 	gui_options: {
 		consent_modal: {
-			layout: "cloud", // box,cloud,bar
-			position: "middle center", // bottom,middle,top + left,right,center
-			transition: "zoom", // zoom,slide
+			layout: "cloud",
+			position: "middle center",
+			transition: "zoom",
 		},
 		settings_modal: {
-			layout: "bar", // box,bar
-			position: "left", // right,left (available only if bar layout selected)
-			transition: "slide", // zoom,slide
+			layout: "bar",
+			position: "left",
+			transition: "slide",
 		},
 	},
 
-	/* 	onFirstAction: function () {
-		console.log("onFirstAction fired");
-	},
-
-	onAccept: function () {
-		console.log("onAccept fired!");
-
-		// If analytics category is disabled => load all iframes automatically
-		if (cc.allowedCategory("analytics")) {
-			console.log("iframemanager: loading all iframes");
-			manager.acceptService("all");
-		}
-	}, */
-
-	onChange: function (cookie, changed_preferences) {
-		/* 		console.log("onChange fired!");
-
-		// If analytics category is disabled => ask for permission to load iframes
-		if (!cc.allowedCategory("analytics")) {
-			console.log("iframemanager: disabling all iframes");
-			manager.rejectService("all");
-		} else {
-			console.log("iframemanager: loading all iframes");
-			manager.acceptService("all");
-		} */
-	},
+	onChange: function (cookie, changed_preferences) {},
 
 	languages: {
 		es: {
 			consent_modal: {
 				title: "USO DE COOKIES",
 				description:
-					"{{ client.siteName }} utiliza cookies propias y de terceros para posibilitar y mejorar tu experiencia de navegación, mostrarte publicidad personalizada así como para realizar análisis estadísticos. Puedes elegir si aceptas las cookies utilizadas por {{ client.siteName }}, o puedes dedicar unos minutos a personalizarlas haciendo click en 'Personalizar'. <br /><br />Obtendrás más información en nuestra <a href='/uso-de-cookies' class='cc-link'>política de cookies</a>.",
+					'Paigar utiliza cookies propias y de terceros para posibilitar y mejorar tu experiencia de navegación, mostrarte publicidad personalizada así como para realizar análisis estadísticos. Puedes elegir si aceptas las cookies utilizadas por Paigar, o puedes dedicar unos minutos a personalizarlas haciendo click en \'Personalizar\'. <br /><br />Obtendrás más información en nuestra <a href="/uso-de-cookies" class="cc-link">política de cookies</a>.',
 				primary_btn: {
 					text: "Aceptar y seguir navegando",
-					role: "accept_all", //'accept_selected' or 'accept_all'
+					role: "accept_all",
 				},
 				secondary_btn: {
 					text: "Personalizar",
-					role: "settings", //'settings' or 'accept_necessary'
+					role: "settings",
 				},
-				revision_message:
-					"<br><br>Estimado usuario: los términos y condiciones han cambiado desde tu última visita!",
 			},
 			settings_modal: {
 				title: "Configuración de Cookies",
@@ -93,7 +53,7 @@ cc.run({
 					{
 						title: "La protección de tus datos es nuestra prioridad",
 						description:
-							"{{ client.siteName }} utiliza cookies propias y de terceros para posibilitar y mejorar tu experiencia de navegación, mostrarte publicidad personalizada así como para realizar análisis estadísticos.",
+							"Paigar utiliza cookies propias y de terceros para posibilitar y mejorar tu experiencia de navegación, mostrarte publicidad personalizada así como para realizar análisis estadísticos.",
 					},
 					{
 						title: "Cookies estrictamente necesarias",
@@ -102,7 +62,7 @@ cc.run({
 						toggle: {
 							value: "necessary",
 							enabled: true,
-							readonly: true, //cookie categories with readonly=true are all treated as "necessary cookies"
+							readonly: true,
 						},
 					},
 					{
@@ -117,18 +77,18 @@ cc.run({
 						cookie_table: [
 							{
 								col1: "^_ga",
-								col2: "{{ client.domain }}",
+								col2: "www.paigar.es",
 								col3: "Registra una identificación única que se utiliza para generar datos estadísticos acerca de cómo utiliza el visitante el sitio web. Es de tipo HTTP y caduca a los dos años.",
 								is_regex: true,
 							},
 							{
 								col1: "_gat",
-								col2: "{{ client.domain }}",
+								col2: "www.paigar.es",
 								col3: "Utilizado por Google Analytics para controlar la tasa de peticiones. Es de tipo HTTP y caduca en un día.",
 							},
 							{
 								col1: "_gid",
-								col2: "{{ client.domain }}",
+								col2: "www.paigar.es",
 								col3: "Registra una identificación única que se utiliza para generar datos estadísticos acerca de cómo utiliza el visitante el sitio web. Es de tipo HTTP y caduca en un día.",
 							},
 						],
@@ -145,18 +105,18 @@ cc.run({
 						cookie_table: [
 							{
 								col1: "_fbp",
-								col2: "{{ client.domain }}",
+								col2: "www.paigar.es",
 								col3: "Utilizada por Facebook para proporcionar una serie de productos publicitarios, como pujas, en tiempo real de terceros anunciantes. Es de tipo HTTP y caduca a los tres meses.",
 								is_regex: true,
 							},
 							{
 								col1: "_gcl_au",
-								col2: "{{ client.domain }}",
+								col2: "www.paigar.es",
 								col3: "Utilizada por Google AdSense para experimentar con la eficiencia publicitaria a través de las webs usando sus servicios. Es de tipo HTTP y caduca a los tres meses.",
 							},
 							{
 								col1: "fr",
-								col2: "{{ client.domain }}",
+								col2: "www.paigar.es",
 								col3: "Utilizada por Facebook para proporcionar una serie de productos publicitarios como pujas en tiempo real, de terceros anunciantes. Es de tipo HTTP y caduca a los tres meses.",
 							},
 						],

@@ -1,0 +1,61 @@
+/* ── Sistema de grid con columnas nombradas ── */
+.limites {
+	--padding-inline: 1.25rem;
+	--dif-normal-estrecho: calc(
+		(var(--anchura-normal) - var(--anchura-estrecho)) / 2
+	);
+	--dif-ancho-normal: calc(
+		(var(--anchura-ancho) - var(--anchura-normal)) / 2
+	);
+
+	display: grid;
+	grid-template-columns:
+		[total-start] minmax(var(--padding-inline), 1fr)
+		[ancho-start] minmax(0, var(--dif-ancho-normal))
+		[normal-start] minmax(0, var(--dif-normal-estrecho))
+		[estrecho-start] min(
+			var(--anchura-estrecho),
+			100% - (var(--padding-inline) * 2)
+		)
+		[estrecho-end] minmax(0, var(--dif-normal-estrecho))
+		[normal-end] minmax(0, var(--dif-ancho-normal))
+		[ancho-end] minmax(var(--padding-inline), 1fr)
+		[total-end];
+}
+
+.limites > * {
+	grid-column: normal;
+}
+
+.limites > .total {
+	grid-column: total;
+}
+
+.limites > .ancho {
+	grid-column: ancho;
+}
+
+.limites > .estrecho {
+	grid-column: estrecho;
+}
+
+/* ── Utilidades de layout ── */
+.flex {
+	display: flex;
+	gap: 1rem;
+}
+
+.between {
+	justify-content: space-between;
+	align-items: center;
+}
+
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}

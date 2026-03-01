@@ -1,17 +1,8 @@
-{%- css %}{% include "public/css/cabecera.css" %}{% endcss %}
-
-<section id="cabecera" class="seccion">
-  <div class="intro animado">
-    <div class="text">
-      <div class="logo">{{ client.siteName }}</div>
-      <h1>{{ title }}</h1>
-    </div>
+<header class="limites cabecera">
+  <div class="flex between ancho cabecera__inner">
+    <a href="/" class="cabecera__logo" aria-label="Inicio">
+      <span class="cabecera__prompt">&gt;</span> paigar<span class="cabecera__cursor"></span>
+    </a>
+    {% include 'partials/nav.njk' %}
   </div>
-  <div class="imagen cubrir animado">
-    <picture>
-      <source srcset="/img/a1.webp" type="image/webp">
-      <source srcset="/img/a1.jpg" type="image/jpeg">
-      <img src="/img/a1.jpg" alt="">
-    </picture>
-  </div>
-</section>
+</header>
