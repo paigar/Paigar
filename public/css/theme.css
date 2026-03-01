@@ -1,12 +1,12 @@
 /* ── Tema claro (por defecto) ── */
 :root {
 	--color-texto: #1a1b2e;
-	--color-texto-alt: #5a5b6e;
+	--color-texto-alt: #4a4b5e;
 	--color-fondo: #fafaf8;
 	--color-fondo-alt: #f0f0ec;
 	--color-fondo-sutil: #e8e8e2;
-	--color-acento: #e05a1b;
-	--color-acento-hover: #f86624;
+	--color-acento: #c24f15;
+	--color-acento-hover: #e05a1b;
 	--color-acento-suave: rgba(248, 102, 36, 0.1);
 	--color-acento-glow: rgba(248, 102, 36, 0.15);
 	--color-borde: #d8d8d0;
@@ -25,7 +25,7 @@
 /* ── Tema oscuro ── */
 [data-theme="dark"] {
 	--color-texto: #dcdcd4;
-	--color-texto-alt: #8e8e86;
+	--color-texto-alt: #9e9e96;
 	--color-fondo: #111118;
 	--color-fondo-alt: #1a1a24;
 	--color-fondo-sutil: #22222e;

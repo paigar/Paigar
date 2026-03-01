@@ -1,6 +1,6 @@
 <article class="postcard">
   <a href="{{ post.url }}" class="postcard__link">
-    <h3 class="postcard__title">{{ post.data.title }}</h3>
+    <{{ postHeading or "h3" }} class="postcard__title">{{ post.data.title }}</{{ postHeading or "h3" }}>
     <p class="postcard__meta">
       <time datetime="{{ post.data.date | htmlDateString }}">{{ post.data.date | readableDate }}</time>
     </p>
