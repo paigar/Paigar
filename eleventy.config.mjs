@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { DateTime } from "luxon";
 import markdownItAnchor from "markdown-it-anchor";
 import pluginRss from "@11ty/eleventy-plugin-rss";
@@ -133,17 +134,41 @@ export default function (eleventyConfig) {
 	// Convertir SVG a PNG después del build (imágenes Open Graph)
 	eleventyConfig.on("eleventy.after", async () => {
 		const ogDir = "_site/og-images/";
+		const cachePath = "_site/og-images/.cache.json";
 
 		if (!fs.existsSync(ogDir)) {
 			return;
 		}
 
+		// Leer caché de hashes anteriores
+		let cache = {};
+		if (fs.existsSync(cachePath)) {
+			try {
+				cache = JSON.parse(fs.readFileSync(cachePath, "utf-8"));
+			} catch {
+				cache = {};
+			}
+		}
+
 		const files = fs.readdirSync(ogDir);
 		const svgFiles = files.filter((f) => f.endsWith(".svg"));
+		let converted = 0;
+		const newCache = {};
 
 		for (const filename of svgFiles) {
 			const inputPath = path.join(ogDir, filename);
 			const outputName = filename.replace(".svg", "");
+			const pngPath = path.join(ogDir, `${outputName}.png`);
+			const svgContent = fs.readFileSync(inputPath, "utf-8");
+			const hash = crypto.createHash("md5").update(svgContent).digest("hex");
+
+			newCache[outputName] = hash;
+
+			// Solo convertir si el contenido ha cambiado o el PNG no existe
+			if (fs.existsSync(pngPath) && cache[outputName] === hash) {
+				fs.unlinkSync(inputPath);
+				continue;
+			}
 
 			await Image(inputPath, {
 				formats: ["png"],
@@ -153,12 +178,22 @@ export default function (eleventyConfig) {
 					return `${outputName}.png`;
 				},
 			});
+			converted++;
 		}
 
 		// Eliminar SVG originales
 		for (const filename of svgFiles) {
-			fs.unlinkSync(path.join(ogDir, filename));
+			const svgPath = path.join(ogDir, filename);
+			if (fs.existsSync(svgPath)) {
+				fs.unlinkSync(svgPath);
+			}
 		}
+
+		// Guardar caché
+		fs.writeFileSync(cachePath, JSON.stringify(newCache, null, 2));
+
+		const cached = svgFiles.length - converted;
+		console.log(`[og-images] ${converted} generada(s), ${cached} en caché`);
 	});
 
 	return {

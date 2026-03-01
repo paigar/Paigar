@@ -695,7 +695,8 @@
 }
 
 /* ── Animaciones de entrada (scroll-triggered) ── */
-.reveal {
+/* Solo ocultar si JS está disponible — evita contenido invisible si JS falla */
+.js .reveal {
 	opacity: 0;
 	transform: translateY(20px);
 	transition: opacity var(--transition-slow), transform var(--transition-slow);
@@ -707,7 +708,7 @@
 }
 
 /* Para elementos que deben aparecer con stagger */
-.reveal-stagger > * {
+.js .reveal-stagger > * {
 	opacity: 0;
 	transform: translateY(16px);
 	transition: opacity var(--transition-slow), transform var(--transition-slow);
@@ -729,8 +730,8 @@
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-	.reveal,
-	.reveal-stagger > * {
+	.js .reveal,
+	.js .reveal-stagger > * {
 		opacity: 1;
 		transform: none;
 		transition: none;
