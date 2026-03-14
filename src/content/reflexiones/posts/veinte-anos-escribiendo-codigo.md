@@ -5,7 +5,7 @@ date: 2026-02-26
 tags:
   - oficio
   - opinión
-destacado: true
+destacado: false
 ---
 
 Alrededor de 1999 hice mi primera página web. Fue en Geocities, con Frontpage, y probablemente tenía un GIF animado en cada esquina. No recuerdo exactamente qué contenía, pero sí recuerdo la sensación: escribir algo, subirlo a un servidor y que cualquiera en el mundo pudiera verlo. Esa sensación, más de veinticinco años después, sigue intacta.
