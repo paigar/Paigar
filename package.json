@@ -4,7 +4,8 @@
 	"description": "Web personal de Juanjo Marcos — desarrollo, código y reflexiones.",
 	"scripts": {
 		"build": "npx @11ty/eleventy",
-		"start": "npx @11ty/eleventy --serve --quiet"
+		"start": "npx @11ty/eleventy --serve --quiet",
+		"publicar": "node scripts/publicar.mjs"
 	},
 	"author": {
 		"name": "Juanjo Marcos",
@@ -22,6 +23,8 @@
 		"@11ty/eleventy-plugin-bundle": "^1.0.4",
 		"@11ty/eleventy-plugin-rss": "^1.2.0",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+		"basic-ftp": "^5.2.0",
+		"dotenv": "^17.3.1",
 		"html-minifier-terser": "^7.2.0",
 		"luxon": "^3.3.0",
 		"markdown-it-anchor": "^8.6.7"
