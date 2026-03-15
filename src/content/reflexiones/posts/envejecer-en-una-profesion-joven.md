@@ -10,7 +10,7 @@ destacado: false
 
 Tengo más de cincuenta años y sigo escribiendo código. En la mayoría de profesiones eso no sería noticia. Un abogado de cincuenta está en la plenitud de su carrera. Un médico, un arquitecto, un periodista — nadie les pregunta si siguen siendo relevantes. Pero en desarrollo web, cumplir años se vive de otra forma. Como si tuvieras que justificarte por seguir ahí.
 
-He visto nacer internet. No en el sentido estricto — la fecha oficial se remonta a los años sesenta —, sino en el sentido práctico: navegué con Lynx en Linux antes de que tuviéramos acceso a navegadores gráficos. Vi aparecer Netscape. Sufrí la tiranía de Internet Explorer 6. Vi morir a Flash y nacer a CSS Grid. Eso da para un artículo entero, pero lo menciono porque define desde dónde escribo: no soy un veterano de diez años. Soy alguien que lleva aquí desde que esto empezó.
+He visto nacer internet. No en el sentido estricto — la fecha oficial se remonta a los años sesenta —, sino en el sentido práctico: navegué con Lynx en Linux antes de que tuviéramos acceso a navegadores gráficos. Vi aparecer Netscape. Sufrí la tiranía de Internet Explorer 6. Vi morir a Flash y nacer a CSS Grid. Eso [da para un artículo entero](/reflexiones/tecnologias-que-marcaron-la-web/), pero lo menciono porque define desde dónde escribo: no soy un veterano de diez años. Soy alguien que lleva aquí desde que esto empezó.
 
 ## La industria del junior
 
