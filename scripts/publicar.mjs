@@ -1,19 +1,31 @@
 import "dotenv/config";
 import { execSync } from "child_process";
-import { Client } from "basic-ftp";
-import { readdirSync, statSync } from "fs";
-import { join, relative } from "path";
+import { createInterface } from "readline";
+import { readFileSync, readdirSync, statSync } from "fs";
+import { join, posix } from "path";
 
 const SITE_DIR = "_site";
 
 // --- 1. Commit y push a GitHub ---
-function gitPush() {
+function preguntar(texto) {
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  return new Promise((resolve) => {
+    rl.question(texto, (respuesta) => {
+      rl.close();
+      resolve(respuesta.trim());
+    });
+  });
+}
+
+async function gitPush() {
   console.log("\n📦 Subiendo cambios a GitHub...");
   try {
     execSync("git add -A", { stdio: "inherit" });
     const status = execSync("git status --porcelain").toString().trim();
     if (status) {
-      execSync('git commit -m "actualización del sitio"', { stdio: "inherit" });
+      const mensaje =
+        (await preguntar("   Mensaje del commit: ")) || "actualización del sitio";
+      execSync(`git commit -m "${mensaje}"`, { stdio: "inherit" });
     } else {
       console.log("   Sin cambios que commitear.");
     }
@@ -32,43 +44,49 @@ function build() {
   console.log("   Build completado.");
 }
 
-// --- 3. Subir por FTP a Bunny ---
-async function subirFTP() {
-  console.log("\n🚀 Subiendo a Bunny Storage por FTP...");
-  const client = new Client();
-
-  try {
-    await client.access({
-      host: process.env.BUNNY_STORAGE_HOSTNAME,
-      user: process.env.BUNNY_STORAGE_ZONE_NAME,
-      password: process.env.BUNNY_STORAGE_PASSWORD,
-      secure: true,
-    });
-
-    await subirDirectorio(client, SITE_DIR, "/");
-    console.log("   Subida completada.");
-  } finally {
-    client.close();
-  }
-}
-
-async function subirDirectorio(client, localDir, remoteDir) {
-  const entries = readdirSync(localDir);
-
-  for (const entry of entries) {
-    const localPath = join(localDir, entry);
-    const remotePath = remoteDir + entry;
-    const stat = statSync(localPath);
-
-    if (stat.isDirectory()) {
-      await client.ensureDir(remotePath + "/");
-      await client.cd("/");
-      await subirDirectorio(client, localPath, remotePath + "/");
+// --- 3. Subir a Bunny Storage (API HTTP) ---
+function listarFicheros(dir, base = "") {
+  const ficheros = [];
+  for (const entry of readdirSync(dir)) {
+    const localPath = join(dir, entry);
+    const remotePath = posix.join(base, entry);
+    if (statSync(localPath).isDirectory()) {
+      ficheros.push(...listarFicheros(localPath, remotePath));
     } else {
-      await client.cd(remoteDir);
-      await client.uploadFrom(localPath, entry);
+      ficheros.push({ localPath, remotePath });
     }
   }
+  return ficheros;
+}
+
+async function subirAPI() {
+  const { BUNNY_STORAGE_HOSTNAME, BUNNY_STORAGE_ZONE_NAME, BUNNY_STORAGE_PASSWORD } =
+    process.env;
+  const baseUrl = `https://${BUNNY_STORAGE_HOSTNAME}/${BUNNY_STORAGE_ZONE_NAME}`;
+  const ficheros = listarFicheros(SITE_DIR);
+
+  console.log(`\n🚀 Subiendo ${ficheros.length} ficheros a Bunny Storage...`);
+
+  let subidos = 0;
+  for (const { localPath, remotePath } of ficheros) {
+    const url = `${baseUrl}/${remotePath}`;
+    const body = readFileSync(localPath);
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        AccessKey: BUNNY_STORAGE_PASSWORD,
+        "Content-Type": "application/octet-stream",
+      },
+      body,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Error subiendo ${remotePath}: ${res.status} ${res.statusText}`);
+    }
+    subidos++;
+    process.stdout.write(`\r   ${subidos}/${ficheros.length} ficheros subidos`);
+  }
+  console.log("\n   Subida completada.");
 }
 
 // --- 4. Purgar caché de Bunny CDN ---
@@ -92,9 +110,9 @@ async function purgarCache() {
 
 // --- Ejecutar todo ---
 try {
-  gitPush();
+  await gitPush();
   build();
-  await subirFTP();
+  await subirAPI();
   await purgarCache();
   console.log("\n✅ Publicación completada.\n");
 } catch (err) {
