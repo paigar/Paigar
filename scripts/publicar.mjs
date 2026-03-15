@@ -92,11 +92,15 @@ async function subirAPI() {
 // --- 4. Purgar caché de Bunny CDN ---
 async function purgarCache() {
   console.log("\n🧹 Purgando caché de Bunny CDN...");
-  const url = `https://api.bunny.net/pullzone/${process.env.BUNNY_PULL_ZONE_ID}/purgeCache`;
+  const apiKey = process.env.BUNNY_API_KEY;
+  const zoneId = process.env.BUNNY_PULL_ZONE_ID;
+  console.log(`   Zone ID: ${zoneId}`);
+  console.log(`   API Key: ${apiKey.substring(0, 8)}... (${apiKey.length} chars)`);
+  const url = `https://api.bunny.net/pullzone/${zoneId}/purgeCache`;
   const res = await fetch(url, {
     method: "POST",
     headers: {
-      AccessKey: process.env.BUNNY_API_KEY,
+      AccessKey: apiKey,
       "Content-Type": "application/json",
     },
   });
