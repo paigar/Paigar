@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { execSync } from "child_process";
 import { createInterface } from "readline";
-import { readFileSync, readdirSync, statSync } from "fs";
+import { readFileSync, readdirSync, statSync, rmSync } from "fs";
 import { join, posix } from "path";
 
 const SITE_DIR = "_site";
@@ -40,6 +40,7 @@ async function gitPush() {
 // --- 2. Build ---
 function build() {
   console.log("\n🔨 Construyendo el sitio...");
+  rmSync(SITE_DIR, { recursive: true, force: true });
   execSync("npx @11ty/eleventy", { stdio: "inherit" });
   console.log("   Build completado.");
 }
@@ -92,15 +93,11 @@ async function subirAPI() {
 // --- 4. Purgar caché de Bunny CDN ---
 async function purgarCache() {
   console.log("\n🧹 Purgando caché de Bunny CDN...");
-  const apiKey = process.env.BUNNY_API_KEY;
-  const zoneId = process.env.BUNNY_PULL_ZONE_ID;
-  console.log(`   Zone ID: ${zoneId}`);
-  console.log(`   API Key: ${apiKey.substring(0, 8)}... (${apiKey.length} chars)`);
-  const url = `https://api.bunny.net/pullzone/${zoneId}/purgeCache`;
+  const url = `https://api.bunny.net/pullzone/${process.env.BUNNY_PULL_ZONE_ID}/purgeCache`;
   const res = await fetch(url, {
     method: "POST",
     headers: {
-      AccessKey: apiKey,
+      AccessKey: process.env.BUNNY_API_KEY,
       "Content-Type": "application/json",
     },
   });
