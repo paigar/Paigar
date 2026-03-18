@@ -452,7 +452,7 @@
 	margin-top: 0.75em;
 }
 
-.tag {
+.tag:not(pre .tag) {
 	font-family: var(--font-mono);
 	font-size: var(--fs-2);
 	color: var(--color-texto-alt);
@@ -474,7 +474,7 @@
 }
 
 /* Evitar que .prosa a herede estilos de enlace en los tags */
-.prosa .tag {
+.prosa .tag:not(pre .tag) {
 	background-image: none;
 	color: var(--color-texto-alt);
 }
