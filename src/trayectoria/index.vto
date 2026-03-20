@@ -1,0 +1,68 @@
+---
+layout: layouts/base.vto
+title: "Trayectoria"
+description: "Mi recorrido profesional: del MSX a Lume, pasando por la ingeniería, la seguridad informática y el desarrollo web."
+url: /trayectoria/
+---
+
+<div class="seccion-header reveal">
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> Trayectoria</h1>
+  <p class="seccion-header__description">De publicar un juego en Basic con 16 años a construir webs con generadores estáticos. No ha sido un camino recto, pero cada etapa ha dejado su marca.</p>
+</div>
+
+{{ set items = [
+  {
+    year: "1990",
+    title: "Mi primer programa publicado",
+    description: "Con 16 años me publican un juego de plataformas programado en Basic para MSX en la revista MSX Club, de difusión nacional. La ilusión de ver tu código impreso en papel marcó para siempre mi relación con los ordenadores.",
+    link: "/media/MSX_Club_64.pdf",
+    linkText: "Ver la revista (PDF)"
+  },
+  {
+    year: "1991–1998",
+    title: "Ingeniería Superior Industrial",
+    description: "Años de formación técnica rigurosa en la universidad. Aunque nunca ejercí como ingeniero industrial, la disciplina analítica y la capacidad de resolver problemas complejos han sido fundamentales en todo lo que vino después."
+  },
+  {
+    year: "1999",
+    title: "Investigación en Holanda",
+    description: "Beca en el instituto de investigación tecnológica de la TUE (Technische Universiteit Eindhoven). Participé en la programación de simulaciones para un nuevo lenguaje de programación capaz de resolver de forma nativa ecuaciones diferenciales parciales. Mi primer contacto con desarrollo de software a nivel profesional."
+  },
+  {
+    year: "2000–2001",
+    title: "Profesor de informática",
+    description: "Enseñar te obliga a entender las cosas a un nivel que no alcanzas solo programando. Aprendí tanto como enseñé."
+  },
+  {
+    year: "2001–2008",
+    title: "Panda Software",
+    description: "Siete años en una de las empresas de referencia en seguridad informática. Aprendí sobre antivirus, protección de sistemas y la industria del software a gran escala. Una escuela que no se puede replicar en ningún curso."
+  },
+  {
+    year: "2008",
+    title: "Deutsche Telekom y el salto al freelance",
+    description: "Trabajé como Service Manager para los clientes del norte de España en una filial de Deutsche Telekom. Pero el trabajo corporativo no me satisfacía. Lo dejé para empezar como consultor informático freelance, buscando una forma de trabajo más alineada con lo que realmente me motivaba."
+  },
+  {
+    year: "2010",
+    title: "Nace Webspecialista",
+    description: "Fundo mi propia empresa centrada específicamente en el desarrollo web. Por fin convierto mi pasión por construir para la web en mi actividad principal."
+  },
+  {
+    year: "2021",
+    title: "De Webspecialista a Idenautas",
+    description: "Tras la pandemia, dificultades económicas y diferencias de visión con mi socio, decido refundar la empresa con un nuevo nombre: Idenautas. Una decisión para recuperar la ilusión original por el desarrollo web y empezar de nuevo con ideas claras."
+  },
+  {
+    year: "2023",
+    title: "Bilbonauta.com",
+    description: "Lanzo mi blog de viajes, evolución de 'El Paigar Viajero' que llevaba años escribiendo de forma intermitente. Construido enteramente con Eleventy y CSS puro. La prueba de que un generador estático puede sostener un proyecto editorial completo."
+  },
+  {
+    year: "2026",
+    title: "Paigar.es — nueva versión",
+    description: "Reconstruyo mi web personal desde cero. Esta vez no como escaparate comercial, sino como bitácora de desarrollo. La web que estás leyendo ahora."
+  }
+] }}
+
+{{ include "partials/timeline.vto" { items } }}

@@ -1,0 +1,21 @@
+<article class="postcard-destacado reveal ancho">
+  <a href="{{ post.url }}" class="postcard-destacado__link">
+    <p class="postcard-destacado__label">Destacado</p>
+    <h2 class="postcard-destacado__title">{{ post.title }}</h2>
+    <p class="postcard-destacado__meta">
+      <time datetime="{{ post.date |> htmlDateString }}">{{ post.date |> readableDate }}</time>
+      <span>&middot;</span>
+      <span>{{ post.content |> readingTime }}</span>
+    </p>
+    {{ if post.description }}
+      <p class="postcard-destacado__description">{{ post.description }}</p>
+    {{ /if }}
+  </a>
+  {{ if post.tags }}
+    <div class="postcard__tags">
+      {{ for tag of post.tags |> filterTagList }}
+        <a href="/tags/{{ tag |> slugify }}/" class="tag">{{ tag }}</a>
+      {{ /for }}
+    </div>
+  {{ /if }}
+</article>

@@ -1,0 +1,87 @@
+---
+layout: layouts/base.vto
+title: "Paigar — Juanjo Marcos"
+description: "Web personal de Juanjo Marcos. Desarrollo web, código y reflexiones sobre el oficio."
+url: /
+---
+
+<section class="hero total">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__glow"></div>
+  </div>
+  <div class="hero__content">
+    <div class="hero__monologue">
+      <blockquote class="monologue">
+        <p class="monologue__line monologue__line--1">Yo&hellip; he visto cosas que vosotros no creeríais:</p>
+        <p class="monologue__line monologue__line--2">Diseñar páginas web usando Frontpage.</p>
+        <p class="monologue__line monologue__line--3">He visto GIFs animados colonizar sitios completos más allá de los dominios de Geocities.</p>
+        <p class="monologue__line monologue__line--4">Todos esos momentos se perderán&hellip; en el tiempo&hellip;</p>
+        <p class="monologue__line monologue__line--5">como cookies en la red.</p>
+        <p class="monologue__line monologue__line--6 monologue__line--final">Es hora de innovar.</p>
+      </blockquote>
+      <div class="monologue__scanlines" aria-hidden="true"></div>
+    </div>
+    <div class="hero__aside">
+      <div class="hero__terminal">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red"></span>
+          <span class="terminal__dot terminal__dot--yellow"></span>
+          <span class="terminal__dot terminal__dot--green"></span>
+          <span class="terminal__title">paigar.es</span>
+        </div>
+        <div class="terminal__body">
+          <p class="terminal__line terminal__line--1">
+            <span class="terminal__prompt">~</span> <span class="terminal__cmd">whoami</span>
+          </p>
+          <p class="terminal__line terminal__line--2">
+            <span class="terminal__output">Juanjo Marcos</span>
+          </p>
+          <p class="terminal__line terminal__line--3">
+            <span class="terminal__prompt">~</span> <span class="terminal__cmd">cat oficio.txt</span>
+          </p>
+          <p class="terminal__line terminal__line--4">
+            <span class="terminal__output">Desarrollador web · Bilbao · Desde 1999</span>
+          </p>
+          <p class="terminal__line terminal__line--5">
+            <span class="terminal__prompt">~</span><span class="terminal__cursor"></span>
+          </p>
+        </div>
+      </div>
+      <div class="hero__links">
+        <a href="/bitacora/" class="hero__cta">Leer la bitácora</a>
+        <a href="/sobre-mi/" class="hero__cta hero__cta--ghost">Sobre mí</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-section ancho">
+  <h2 class="home-section__title">
+    <span class="home-section__marker">//</span> Últimas entradas
+  </h2>
+
+  {{ set bitacoraEntries = search.pages("bitacora", "date=desc").slice(0, 3) }}
+  {{ set reflexionesEntries = search.pages("reflexiones", "date=desc").slice(0, 3) }}
+  {{ set allEntries = [...bitacoraEntries, ...reflexionesEntries].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 4) }}
+
+  {{ if allEntries.length > 0 }}
+    <div class="posts-list">
+      {{ for post of allEntries }}
+        {{ include "partials/postcard.vto" { post } }}
+      {{ /for }}
+    </div>
+  {{ else }}
+    <p class="home-empty">Próximamente.</p>
+  {{ /if }}
+</section>
+
+<section class="home-section ancho">
+  <h2 class="home-section__title">
+    <span class="home-section__marker">//</span> Sobre este sitio
+  </h2>
+  <div class="prosa">
+    <p>Paigar.es es mi espacio personal como desarrollador. Si <a href="https://www.bilbonauta.com">Bilbonauta</a> es donde escribo sobre viajes, este es el lugar donde hablo sobre código, herramientas y el oficio de construir para la web.</p>
+    <p>No es una web comercial — para eso está <a href="https://www.idenautas.com">Idenautas</a>, mi empresa. Aquí simplemente comparto lo que aprendo, lo que opino y lo que me entusiasma de este trabajo después de dos décadas.</p>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+layout: layouts/base.vto
+title: "Reflexiones"
+description: "Opiniones y pensamientos sobre el oficio de desarrollar para la web."
+url: /reflexiones/
+tags: []
+---
+
+<div class="seccion-header reveal ancho">
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> Reflexiones</h1>
+  <p class="seccion-header__description">Opiniones y pensamientos sobre el oficio, la industria y lo que significa construir para la web después de más de veinte años.</p>
+</div>
+
+{{ set posts = search.pages("reflexiones", "date=desc") }}
+{{ set destacado = posts.find(p => p.destacado) }}
+
+{{ if destacado }}
+  {{ set post = destacado }}
+  {{ include "partials/postcard-destacado.vto" { post } }}
+{{ /if }}
+
+{{ if posts.length > 0 }}
+  <div class="posts-grid reveal-stagger ancho">
+    {{ for post of posts }}
+      {{ if post != destacado }}
+        {{ include "partials/postcard.vto" { post, postHeading: "h2" } }}
+      {{ /if }}
+    {{ /for }}
+  </div>
+{{ else }}
+  <p style="color: var(--color-texto-alt); font-style: italic;">Próximamente.</p>
+{{ /if }}

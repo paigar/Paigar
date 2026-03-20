@@ -1,0 +1,20 @@
+<article class="postcard">
+  <a href="{{ post.url }}" class="postcard__link">
+    <{{ postHeading || "h3" }} class="postcard__title">{{ post.title }}</{{ postHeading || "h3" }}>
+    <p class="postcard__meta">
+      <time datetime="{{ post.date |> htmlDateString }}">{{ post.date |> readableDate }}</time>
+      <span class="postcard__sep">&middot;</span>
+      <span>{{ post.content |> readingTime }}</span>
+    </p>
+    {{ if post.description }}
+      <p class="postcard__description">{{ post.description }}</p>
+    {{ /if }}
+  </a>
+  {{ if post.tags }}
+    <div class="postcard__tags">
+      {{ for tag of post.tags |> filterTagList }}
+        <a href="/tags/{{ tag |> slugify }}/" class="tag">{{ tag }}</a>
+      {{ /for }}
+    </div>
+  {{ /if }}
+</article>

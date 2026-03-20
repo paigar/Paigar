@@ -1,0 +1,32 @@
+---
+layout: layouts/base.vto
+title: "Bitácora"
+description: "Proyectos, experimentos y descubrimientos técnicos."
+url: /bitacora/
+tags: []
+---
+
+<div class="seccion-header reveal ancho">
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> Bitácora</h1>
+  <p class="seccion-header__description">Proyectos, experimentos y descubrimientos técnicos. Lo que construyo y lo que aprendo por el camino.</p>
+</div>
+
+{{ set posts = search.pages("bitacora", "date=desc") }}
+{{ set destacado = posts.find(p => p.destacado) }}
+
+{{ if destacado }}
+  {{ set post = destacado }}
+  {{ include "partials/postcard-destacado.vto" { post } }}
+{{ /if }}
+
+{{ if posts.length > 0 }}
+  <div class="posts-grid reveal-stagger ancho">
+    {{ for post of posts }}
+      {{ if post != destacado }}
+        {{ include "partials/postcard.vto" { post, postHeading: "h2" } }}
+      {{ /if }}
+    {{ /for }}
+  </div>
+{{ else }}
+  <p style="color: var(--color-texto-alt); font-style: italic;">Próximamente.</p>
+{{ /if }}

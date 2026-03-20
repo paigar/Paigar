@@ -1,0 +1,70 @@
+---
+layout: layouts/base.vto
+---
+<article class="prosa">
+  <header class="post-header">
+    <h1>{{ title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ date |> htmlDateString }}">{{ date |> readableDate }}</time>
+      <span class="post-meta__sep">&middot;</span>
+      <span>{{ content |> readingTime }} de lectura</span>
+    </div>
+    {{ if tags }}
+      <div class="post-tags">
+        {{ for tag of tags |> filterTagList }}
+          <a href="/tags/{{ tag |> slugify }}/" class="tag">{{ tag }}</a>
+        {{ /for }}
+      </div>
+    {{ /if }}
+  </header>
+
+  {{ content }}
+</article>
+
+{{ if tags?.includes("bitacora") }}
+  {{ set sectionPosts = search.pages("bitacora", "date=asc") }}
+  {{ set sectionUrl = "/bitacora/" }}
+  {{ set sectionName = "la bitácora" }}
+{{ else if tags?.includes("reflexiones") }}
+  {{ set sectionPosts = search.pages("reflexiones", "date=asc") }}
+  {{ set sectionUrl = "/reflexiones/" }}
+  {{ set sectionName = "reflexiones" }}
+{{ /if }}
+
+{{ set prevPost = null }}
+{{ set nextPost = null }}
+{{ if sectionPosts }}
+  {{ for post, index of sectionPosts }}
+    {{ if post.url == url }}
+      {{ if index > 0 }}
+        {{ set prevPost = sectionPosts[index - 1] }}
+      {{ /if }}
+      {{ if index < sectionPosts.length - 1 }}
+        {{ set nextPost = sectionPosts[index + 1] }}
+      {{ /if }}
+    {{ /if }}
+  {{ /for }}
+{{ /if }}
+
+<nav class="post-nav" aria-label="Navegación entre artículos">
+  {{ if prevPost }}
+    <a href="{{ prevPost.url }}" class="post-nav__link post-nav__link--prev">
+      <span class="post-nav__label">&larr; Anterior</span>
+      <span class="post-nav__title">{{ prevPost.title }}</span>
+    </a>
+  {{ else }}
+    <span></span>
+  {{ /if }}
+  {{ if nextPost }}
+    <a href="{{ nextPost.url }}" class="post-nav__link post-nav__link--next">
+      <span class="post-nav__label">Siguiente &rarr;</span>
+      <span class="post-nav__title">{{ nextPost.title }}</span>
+    </a>
+  {{ else }}
+    <span></span>
+  {{ /if }}
+</nav>
+
+<nav class="post-back" aria-label="Volver al listado">
+  <a href="{{ sectionUrl }}" class="post-back__link">&larr; Volver a {{ sectionName }}</a>
+</nav>

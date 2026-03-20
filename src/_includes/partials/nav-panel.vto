@@ -1,0 +1,20 @@
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="nav-panel" id="nav-panel" aria-label="Navegación móvil">
+  <div class="nav-panel__header">
+    <span class="nav-panel__logo"><span class="cabecera__prompt">&gt;</span> paigar</span>
+    <button class="nav-panel__close" aria-label="Cerrar menú">&times;</button>
+  </div>
+  <div class="nav-panel__links">
+    {{ for item of mainmenu.items }}
+      <a href="{{ item.url }}" class="nav-panel__link"{{ if url == item.url || (item.url != "/" && url?.startsWith(item.url)) }} aria-current="page"{{ /if }}>
+        {{ item.text }}
+      </a>
+    {{ /for }}
+  </div>
+  <div class="nav-panel__footer">
+    <button class="theme-toggle theme-toggle--panel" aria-label="Cambiar tema" title="Cambiar tema claro/oscuro">
+      <script>document.write(document.documentElement.getAttribute('data-theme') === 'dark' ? '☀' : '☾')</script>
+    </button>
+    <span class="nav-panel__theme-label">Cambiar tema</span>
+  </div>
+</nav>

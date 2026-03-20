@@ -1,0 +1,35 @@
+---
+layout: layouts/base.vto
+title: "404 — Página no encontrada"
+description: "Esta página no existe. O existió y ya no. O quizás nunca existió."
+url: /404.html
+---
+
+<div class="error-404 ancho">
+  <div class="error-404__terminal">
+    <div class="terminal__bar">
+      <span class="terminal__dot terminal__dot--red"></span>
+      <span class="terminal__dot terminal__dot--yellow"></span>
+      <span class="terminal__dot terminal__dot--green"></span>
+      <span class="terminal__title">paigar.es</span>
+    </div>
+    <div class="terminal__body">
+      <p class="terminal__line"><span class="terminal__prompt">~</span> <span class="terminal__cmd">cat pagina.html</span></p>
+      <p class="terminal__line"><span class="terminal__output terminal__output--error">Error: No such file or directory</span></p>
+      <p class="terminal__line"><span class="terminal__prompt">~</span> <span class="terminal__cmd">echo $?</span></p>
+      <p class="terminal__line"><span class="terminal__output">404</span></p>
+      <p class="terminal__line"><span class="terminal__prompt">~</span><span class="terminal__cursor"></span></p>
+    </div>
+  </div>
+
+  <div class="error-404__content">
+    <h1 class="error-404__title">Página no encontrada</h1>
+    <p class="error-404__text">La URL que buscas no existe. Puede que el enlace esté roto, que la página se haya movido, o que nunca haya existido.</p>
+    <p class="error-404__text error-404__text--quote">Como diría Roy Batty: se perdió en el tiempo, como cookies en la red.</p>
+    <div class="error-404__links">
+      <a href="/" class="error-404__cta">Ir al inicio</a>
+      <a href="/bitacora/" class="error-404__cta error-404__cta--ghost">Bitácora</a>
+      <a href="/reflexiones/" class="error-404__cta error-404__cta--ghost">Reflexiones</a>
+    </div>
+  </div>
+</div>

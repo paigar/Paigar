@@ -1,0 +1,19 @@
+---
+layout: layouts/base.vto
+title: "Tags"
+description: "Todos los temas sobre los que escribo en paigar.es."
+url: /tags/
+---
+
+<div class="prosa">
+  <h1>Tags</h1>
+  <p>Todos los temas sobre los que escribo, entre la bitácora técnica y las reflexiones.</p>
+</div>
+
+<div class="tags-cloud">
+  {{ set allTags = search.values("tags").filter(t => !["bitacora", "reflexiones"].includes(t)).sort() }}
+  {{ for tag of allTags }}
+    <a href="/tags/{{ tag |> slugify }}/" class="tag tag--big">{{ tag }}
+      <span class="tag__count">{{ search.pages(tag).length }}</span></a>
+  {{ /for }}
+</div>

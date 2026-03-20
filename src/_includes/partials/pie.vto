@@ -1,0 +1,36 @@
+<footer class="limites pie">
+  <div class="pie__inner ancho">
+    <div class="pie__nav">
+      <p class="pie__heading">Navegación</p>
+      <ul class="pie__menu">
+        {{ for item of mainmenu.items }}
+          <li><a href="{{ item.url }}"{{ if url == item.url || (item.url != "/" && url?.startsWith(item.url)) }} aria-current="page"{{ /if }}>{{ item.text }}</a></li>
+        {{ /for }}
+      </ul>
+    </div>
+    <div class="pie__elsewhere">
+      <p class="pie__heading">También en</p>
+      <ul class="pie__menu">
+        <li><a href="https://www.bilbonauta.com">Bilbonauta</a></li>
+        <li><a href="https://www.idenautas.com">Idenautas</a></li>
+        <li><a href="https://www.paigar.eu">paigar.eu</a></li>
+        <li><a href="https://www.instagram.com/paigar">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="pie__legal">
+      <p class="pie__heading">Legal</p>
+      <ul class="pie__menu">
+        <li><a href="/aviso-legal/">Aviso legal</a></li>
+        <li><a href="/politica-de-privacidad/">Privacidad</a></li>
+        <li><a href="/uso-de-cookies/">Cookies</a></li>
+      </ul>
+    </div>
+    <div class="pie__info">
+      <p class="pie__brand"><span class="pie__prompt">&gt;</span> paigar</p>
+      <p class="pie__copy">&copy; {{ new Date().getFullYear() }} Juanjo Marcos</p>
+      <p class="pie__tech">Hecho con <a href="https://lume.land/">Lume</a></p>
+      <p><a href="/versiones/" class="pie__versions">Versiones anteriores</a></p>
+      <p><a href="/feed/feed.xml" class="pie__versions">RSS</a></p>
+    </div>
+  </div>
+</footer>

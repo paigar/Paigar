@@ -1,0 +1,19 @@
+---
+layout: layouts/base.vto
+---
+<div class="seccion-header reveal ancho">
+  <h1 class="seccion-header__title"><span class="seccion-header__marker">//</span> {{ tag }}</h1>
+  <p class="seccion-header__description">{{ tagPosts.length }} artículo{{ tagPosts.length != 1 ? "s" : "" }} con esta etiqueta.</p>
+</div>
+
+{{ if tagPosts.length > 0 }}
+  <div class="posts-grid reveal-stagger ancho">
+    {{ for post of tagPosts }}
+      {{ include "partials/postcard.vto" { post } }}
+    {{ /for }}
+  </div>
+{{ /if }}
+
+<nav class="post-back ancho" style="margin-top: var(--space-xl);">
+  <a href="/tags/" class="post-back__link">&larr; Todos los tags</a>
+</nav>

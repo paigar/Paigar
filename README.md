@@ -4,32 +4,38 @@ Sitio web personal de [Juanjo Marcos](https://paigar.es), desarrollador web. Un 
 
 ## Tech Stack
 
-- **[Eleventy (11ty)](https://www.11ty.dev/)** v3 — Generador de sitios estáticos
-- **Nunjucks** + **Markdown** — Templates y contenido
+- **[Lume](https://lume.land/)** — Generador de sitios estáticos sobre Deno
+- **Vento** + **Markdown** — Templates y contenido
 - **CSS puro** — Custom properties, Grid, Flexbox, `clamp()` para tipografía fluida
 - **JavaScript vanilla** — Sin frameworks ni dependencias en el cliente
 
 ## Características
 
 - Tema claro/oscuro con persistencia y respeto a preferencias del sistema
-- Generación automática de imágenes Open Graph (SVG → PNG con caché MD5)
-- Feed RSS, sitemap y metadatos SEO
+- Generación automática de imágenes Open Graph (SVG → PNG con resvg)
+- Feed RSS + JSON Feed, sitemap y metadatos SEO
 - Diseño responsive sin frameworks CSS
 - HTML minificado en producción
+- Syntax highlighting con PrismJS
 - Estimación de tiempo de lectura
 - Navegación por tags
 
 ## Estructura del proyecto
 
 ```
+_config.ts            # Configuración de Lume
+deno.json             # Configuración de Deno (tareas, imports)
+scripts/
+└── publicar.ts       # Script de publicación (git + build + Bunny CDN)
 src/
-├── content/          # Páginas y artículos (Markdown + Nunjucks)
-│   ├── bitacora/     # Artículos técnicos
-│   ├── reflexiones/  # Reflexiones sobre desarrollo
-│   ├── sobre-mi/     # Página "Sobre mí"
-│   ├── trayectoria/  # Trayectoria profesional
-│   └── herramientas/ # Stack tecnológico
-├── _includes/        # Layouts y componentes parciales
+├── bitacora/         # Artículos técnicos (.md)
+├── reflexiones/      # Reflexiones sobre desarrollo (.md)
+├── sobre-mi/         # Página "Sobre mí"
+├── trayectoria/      # Trayectoria profesional
+├── herramientas/     # Stack tecnológico
+├── legal/            # Páginas legales
+├── tags/             # Índice de tags
+├── _includes/        # Layouts y componentes parciales (.vto)
 ├── _data/            # Datos globales (metadata, menú, herramientas)
 └── public/           # Assets estáticos (CSS, JS, fuentes, imágenes)
 ```
@@ -37,17 +43,17 @@ src/
 ## Desarrollo
 
 ```bash
-# Instalar dependencias
-npm install
-
 # Servidor de desarrollo con recarga automática
-npm start
+deno task serve
 
 # Build de producción
-npm run build
+deno task build
+
+# Publicar (git push + build + subir a Bunny CDN + purgar caché)
+deno task publicar
 ```
 
-Requiere Node 18+. El build genera el sitio estático en `_site/`.
+Requiere [Deno](https://deno.land/). El build genera el sitio estático en `_site/`.
 
 ## Licencia
 

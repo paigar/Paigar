@@ -1,0 +1,13 @@
+<nav class="nav" aria-label="Navegación principal">
+  {{ for item of mainmenu.items }}
+    <a href="{{ item.url }}" class="nav__link"{{ if url == item.url || (item.url != "/" && url?.startsWith(item.url)) }} aria-current="page"{{ /if }}>
+      {{ item.text }}
+    </a>
+  {{ /for }}
+</nav>
+
+<button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-panel">
+  <span class="nav-hamburger__bar"></span>
+  <span class="nav-hamburger__bar"></span>
+  <span class="nav-hamburger__bar"></span>
+</button>

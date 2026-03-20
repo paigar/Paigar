@@ -1,6 +1,7 @@
 _site/
 node_modules/
 package-lock.json
+deno.lock
 .cache
 .env
 .claude/
