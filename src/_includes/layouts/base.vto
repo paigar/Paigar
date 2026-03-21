@@ -47,8 +47,9 @@
     <meta property="og:description" content="{{ description || metadata.description }}">
     <meta property="og:url" content="{{ metadata.url }}{{ url }}">
     <meta property="og:type" content="website">
+    {{ set slug = url.split("/").filter(Boolean).pop() }}
     {{ if tags && (tags.includes("bitacora") || tags.includes("reflexiones")) }}
-    <meta property="og:image" content="{{ metadata.url }}/og-images/{{ page.src.slug }}.png">
+    <meta property="og:image" content="{{ metadata.url }}/og-images/{{ slug }}.png">
     {{ else }}
     <meta property="og:image" content="{{ metadata.url }}/og-images/default.png">
     {{ /if }}
@@ -58,7 +59,7 @@
     <meta name="twitter:title" content="{{ title || metadata.title }}">
     <meta name="twitter:description" content="{{ description || metadata.description }}">
     {{ if tags && (tags.includes("bitacora") || tags.includes("reflexiones")) }}
-    <meta name="twitter:image" content="{{ metadata.url }}/og-images/{{ page.src.slug }}.png">
+    <meta name="twitter:image" content="{{ metadata.url }}/og-images/{{ slug }}.png">
     {{ else }}
     <meta name="twitter:image" content="{{ metadata.url }}/og-images/default.png">
     {{ /if }}
