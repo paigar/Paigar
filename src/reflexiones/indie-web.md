@@ -8,7 +8,7 @@ tags:
 destacado: false
 ---
 
-He escrito antes sobre [la importancia de tener web propia](/reflexiones/la-muerte-y-resurreccion-de-la-web-personal/) y sobre [la web que perdimos](/reflexiones/la-web-que-perdimos/) cuando dejamos que las plataformas centralizaran todo. Pero hay algo que no mencioné en esos artículos: que estas ideas no son solo una intuición mía ni una corriente difusa. Existe un movimiento organizado, con nombre, principios y herramientas. Se llama **Indie Web**.
+He escrito antes sobre [la importancia de tener web propia](/reflexiones/muerte-web-personal/) y sobre [la web que perdimos](/reflexiones/web-que-perdimos/) cuando dejamos que las plataformas centralizaran todo. Pero hay algo que no mencioné en esos artículos: que estas ideas no son solo una intuición mía ni una corriente difusa. Existe un movimiento organizado, con nombre, principios y herramientas. Se llama **Indie Web**.
 
 ## Qué es la Indie Web
 
