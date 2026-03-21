@@ -1,7 +1,7 @@
 ---
 title: "La muerte (y resurrección) de la web personal"
 description: "Las redes sociales nos convencieron de que no necesitábamos web propia. Fue un error. Reflexión sobre la importancia de tener tu propio espacio en internet."
-date: 2025-05-08
+date: 2025-05-15
 tags:
   - opinión
   - oficio

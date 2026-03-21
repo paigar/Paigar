@@ -1,7 +1,7 @@
 ---
 title: "Diseñador web y desarrollador web no son lo mismo"
 description: "La confusión entre diseño y desarrollo web es perjudicial para ambas profesiones y para los clientes. Cada una requiere habilidades, formación y mentalidad diferentes."
-date: 2025-09-12
+date: 2025-08-08
 tags:
   - oficio
   - opinión

@@ -1,7 +1,7 @@
 ---
 title: "Desplegar webs estáticas: opciones reales para 2025"
 description: "Comparación práctica de las plataformas de hosting para sitios estáticos. De Netlify a Bunny CDN, pasando por StaticHost.eu — mi recorrido y dónde he terminado."
-date: 2025-09-28
+date: 2025-08-10
 tags:
   - eleventy
   - hosting

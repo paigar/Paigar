@@ -1,7 +1,7 @@
 ---
 title: "Por qué elijo no usar frameworks"
 description: "No es nostalgia ni desconocimiento. Es una decisión técnica fundamentada. Razones concretas por las que prefiero HTML, CSS y JavaScript vanilla para la mayoría de proyectos."
-date: 2026-02-14
+date: 2026-01-15
 tags:
   - opinión
   - técnicas

@@ -1,13 +1,13 @@
 ---
 title: "Animaciones ligadas al scroll con una sola línea de JavaScript"
 description: "Cómo usar una variable CSS alimentada por el scroll del navegador para crear animaciones complejas sin librerías. La técnica detrás de la versión anterior de paigar.es."
-date: 2026-01-28
+date: 2025-12-02
 tags:
   - css
   - javascript
   - animaciones
   - técnicas
-destacado: true
+destacado: false
 ---
 
 La versión anterior de paigar.es tenía animaciones complejas ligadas al scroll: secciones que rotaban, imágenes que aparecían desde los laterales, textos que se revelaban progresivamente. Todo eso sin GSAP, sin ScrollMagic, sin ninguna librería de animación. Solo CSS y una línea de JavaScript.

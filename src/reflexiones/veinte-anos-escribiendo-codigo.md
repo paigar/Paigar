@@ -1,7 +1,7 @@
 ---
 title: "Más de 25 años escribiendo código para la web"
 description: "Lo que he aprendido después de más de dos décadas construyendo sitios web. Sobre las modas, las herramientas y lo que realmente importa."
-date: 2026-02-26
+date: 2026-01-30
 tags:
   - oficio
   - opinión

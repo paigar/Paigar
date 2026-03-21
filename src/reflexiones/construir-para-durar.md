@@ -1,7 +1,7 @@
 ---
 title: "Construir para durar: webs que sobrevivan diez años"
 description: "En un oficio obsesionado con lo nuevo, una reflexión sobre el valor de construir cosas que perduren. Qué decisiones técnicas hacen que una web sobreviva al paso del tiempo."
-date: 2026-01-15
+date: 2025-11-18
 tags:
   - opinión
   - oficio

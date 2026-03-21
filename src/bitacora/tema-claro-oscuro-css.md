@@ -1,7 +1,7 @@
 ---
 title: "Implementar un tema claro/oscuro con CSS custom properties"
 description: "Cómo construir un sistema de temas sin frameworks ni JavaScript innecesario. Solo custom properties, un atributo data y un par de líneas de JS."
-date: 2025-10-05
+date: 2025-08-28
 tags:
   - css
   - javascript

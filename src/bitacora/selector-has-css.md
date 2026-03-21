@@ -1,11 +1,11 @@
 ---
 title: "El selector :has() — el selector padre que CSS siempre necesitó"
 description: "Casos prácticos del selector :has() de CSS: formularios reactivos, navegación contextual y layouts que responden al contenido. Sin JavaScript y con progressive enhancement."
-date: 2026-03-10
+date: 2026-01-14
 tags:
   - css
   - técnicas
-destacado: true
+destacado: false
 ---
 
 Durante años, la pregunta más repetida en cualquier foro de CSS era: "¿puedo seleccionar un elemento padre en función de sus hijos?". La respuesta siempre fue no. Podías ir hacia abajo (descendientes), hacia los lados (hermanos con `~` y `+`), pero nunca hacia arriba. El selector padre era el unicornio de CSS.

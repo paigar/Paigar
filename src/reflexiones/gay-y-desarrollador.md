@@ -1,7 +1,7 @@
 ---
 title: "Gay y desarrollador web"
 description: "No diseñador, no influencer, no activista. Desarrollador. Sobre la invisibilidad de ser gay en un oficio donde se supone que solo importa el código."
-date: 2025-11-25
+date: 2025-10-10
 tags:
   - opinión
   - oficio

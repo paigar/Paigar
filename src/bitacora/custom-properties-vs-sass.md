@@ -1,7 +1,7 @@
 ---
 title: "CSS custom properties vs variables Sass: por qué ya no necesito un preprocesador"
 description: "Las custom properties de CSS hacen innecesario Sass para la mayoría de proyectos. Comparación práctica con ejemplos de lo que puedes hacer con CSS nativo que antes requería un preprocesador."
-date: 2025-05-20
+date: 2025-05-12
 tags:
   - css
   - técnicas

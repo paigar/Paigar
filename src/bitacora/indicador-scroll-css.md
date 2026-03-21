@@ -1,7 +1,7 @@
 ---
 title: "Un indicador de scroll con CSS puro"
 description: "Cómo crear una barra de progreso de lectura sin una sola línea de JavaScript, desde el truco clásico del gradiente diagonal hasta scroll-driven animations."
-date: 2026-01-15
+date: 2025-11-12
 tags:
   - css
   - técnicas

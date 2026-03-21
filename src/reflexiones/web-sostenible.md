@@ -1,12 +1,12 @@
 ---
 title: "La web sostenible: cada kilobyte tiene un coste"
 description: "Reflexión sobre el consumo de recursos de la web y la responsabilidad medioambiental de los desarrolladores. La mayoría de webs no necesitan lo que tienen."
-date: 2026-02-02
+date: 2025-12-28
 tags:
   - sostenibilidad
   - opinión
   - rendimiento
-destacado: true
+destacado: false
 ---
 
 Internet consume aproximadamente el 4% de la electricidad mundial. Para ponerlo en contexto: si la web fuera un país, sería el cuarto mayor consumidor de energía del planeta, por detrás de China, Estados Unidos y la India. Y esa cifra crece cada año.

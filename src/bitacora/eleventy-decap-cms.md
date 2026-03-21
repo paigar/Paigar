@@ -1,7 +1,7 @@
 ---
 title: "Eleventy y Decap CMS: cuando el cliente quiere editar"
 description: "Las ventajas y los problemas reales de usar un CMS headless con un generador estático. Qué pasa cuando un cliente sin perfil técnico gestiona su propio contenido."
-date: 2026-02-10
+date: 2025-12-22
 tags:
   - eleventy
   - cms

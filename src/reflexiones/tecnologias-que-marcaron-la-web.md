@@ -1,7 +1,7 @@
 ---
 title: "Las tecnologías que marcaron la web (vistas desde dentro)"
 description: "De Lynx a CSS Grid, pasando por Netscape, IE6, Flash y Geocities. Un recorrido personal por las herramientas que definieron cada época de la web."
-date: 2026-03-15
+date: 2026-02-28
 tags:
   - oficio
   - opinión

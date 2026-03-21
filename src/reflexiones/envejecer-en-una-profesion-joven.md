@@ -1,7 +1,7 @@
 ---
 title: "Envejecer en una profesión joven"
 description: "Ser desarrollador senior en un sector que idealiza la juventud. Sobre la experiencia, la relevancia y lo que nadie te cuenta de cumplir años escribiendo código."
-date: 2026-03-14
+date: 2026-02-22
 tags:
   - oficio
   - opinión

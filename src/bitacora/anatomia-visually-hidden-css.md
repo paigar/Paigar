@@ -1,7 +1,7 @@
 ---
 title: "Anatomía de .visually-hidden — cada propiedad tiene su razón"
 description: "Desglose línea por línea del patrón CSS visually-hidden: por qué cada propiedad existe, qué problema resuelve, y por qué no puedes simplemente usar display:none."
-date: 2026-03-18
+date: 2026-02-12
 tags:
   - css
   - accesibilidad

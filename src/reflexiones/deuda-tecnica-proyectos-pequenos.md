@@ -1,7 +1,7 @@
 ---
 title: "La deuda técnica en proyectos pequeños"
 description: "La deuda técnica no es exclusiva de grandes empresas. En proyectos pequeños, sus efectos son incluso más devastadores porque no hay equipo para absorberla."
-date: 2025-12-05
+date: 2025-10-30
 tags:
   - opinión
   - oficio

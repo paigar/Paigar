@@ -1,12 +1,12 @@
 ---
 title: "WordPress: la democratización que trajo un problema"
 description: "WordPress ha hecho la web accesible para millones de personas. También ha creado una generación de 'profesionales' que confunden instalar una plantilla con saber hacer webs."
-date: 2025-07-15
+date: 2025-06-28
 tags:
   - wordpress
   - opinión
   - oficio
-destacado: true
+destacado: false
 ---
 
 Hay que reconocerlo: WordPress ha democratizado la creación web de una forma que ninguna otra tecnología ha logrado. Más de un 40% de los sitios web del mundo funcionan con WordPress. Ha permitido que millones de personas sin conocimientos de programación tengan presencia en internet. Eso es genuinamente positivo.

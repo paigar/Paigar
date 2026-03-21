@@ -1,7 +1,7 @@
 ---
 title: "El mito de 'saber hacer webs'"
 description: "Todo el mundo 'sabe hacer webs'. Mi sobrino, mi vecino, la IA, la plataforma con plantillas. ¿Qué significa realmente saber hacer webs en 2026?"
-date: 2025-06-22
+date: 2025-06-10
 tags:
   - oficio
   - opinión

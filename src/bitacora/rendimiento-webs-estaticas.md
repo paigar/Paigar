@@ -1,7 +1,7 @@
 ---
 title: "Rendimiento en webs estáticas: lo que ya haces bien y lo que puedes mejorar"
 description: "Una web estática no es automáticamente rápida. Técnicas concretas para que tu sitio generado con Eleventy cargue en milisegundos."
-date: 2026-01-10
+date: 2025-10-25
 tags:
   - rendimiento
   - eleventy

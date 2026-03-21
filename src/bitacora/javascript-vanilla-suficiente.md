@@ -1,7 +1,7 @@
 ---
 title: "JavaScript vanilla es suficiente para tu web"
 description: "Por qué no necesitas React, Vue ni ningún framework JavaScript para la mayoría de sitios web. Con ejemplos de lo que puedes hacer con el lenguaje nativo del navegador."
-date: 2025-08-20
+date: 2025-07-20
 tags:
   - javascript
   - opinión

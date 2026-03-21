@@ -1,7 +1,7 @@
 ---
 title: "Tipografía fluida con clamp(): adiós a las media queries para tamaños"
 description: "Cómo usar clamp() para crear una escala tipográfica que se adapta al viewport sin necesidad de breakpoints. Con ejemplos prácticos y la lógica detrás de los valores."
-date: 2025-06-10
+date: 2025-06-08
 tags:
   - css
   - tipografía

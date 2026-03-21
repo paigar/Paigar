@@ -1,7 +1,7 @@
 ---
 title: "Accesibilidad web: el mínimo que todo desarrollador debería cumplir"
 description: "No hace falta ser experto en WCAG para hacer webs accesibles. Estas son las prácticas básicas que marcan la diferencia y que no tienen excusa para no implementarse."
-date: 2025-07-28
+date: 2025-06-28
 tags:
   - accesibilidad
   - html

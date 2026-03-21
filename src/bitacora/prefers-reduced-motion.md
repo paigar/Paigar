@@ -1,7 +1,7 @@
 ---
 title: "prefers-reduced-motion: respetar al usuario que no quiere animaciones"
 description: "Cómo usar la media query prefers-reduced-motion para desactivar animaciones cuando el usuario lo ha pedido. Con ejemplos prácticos y la filosofía detrás."
-date: 2026-02-18
+date: 2026-01-30
 tags:
   - css
   - accesibilidad

@@ -1,7 +1,7 @@
 ---
 title: "Imágenes responsive con picture y srcset: la guía práctica"
 description: "Cómo servir la imagen correcta para cada dispositivo sin cargar bytes innecesarios. picture, srcset, sizes, lazy loading y formatos modernos."
-date: 2025-12-20
+date: 2025-10-05
 tags:
   - html
   - rendimiento

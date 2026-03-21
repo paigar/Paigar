@@ -3,6 +3,8 @@ import sitemap from "lume/plugins/sitemap.ts";
 import feed from "lume/plugins/feed.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
+import postcss from "lume/plugins/postcss.ts";
+import inline from "lume/plugins/inline.ts";
 import markdownItAnchor from "npm:markdown-it-anchor@8.6.7";
 import { render as renderSvgToPng } from "https://deno.land/x/resvg_wasm@0.2.0/mod.ts";
 
@@ -13,6 +15,8 @@ const site = lume({
 
 // -- Plugins (Vento es el motor de plantillas por defecto en Lume) --
 site.use(slugifyUrls());
+site.use(postcss());
+site.use(inline());
 site.use(sitemap());
 site.use(minifyHTML());
 
@@ -124,20 +128,6 @@ site.filter("readingTime", (content: string) => {
 
 site.filter("startsWith", (str: string, prefix: string) => {
   return str && str.startsWith(prefix);
-});
-
-site.filter("splitlines", (input: string) => {
-  const parts = input.split(" ");
-  const lines = parts.reduce((prev: string[], current: string) => {
-    if (!prev.length) return [current];
-    const lastLine = prev[prev.length - 1];
-    if (lastLine.length + 1 + current.length > 36) {
-      return [...prev, current];
-    }
-    prev[prev.length - 1] = lastLine + " " + current;
-    return prev;
-  }, []);
-  return lines;
 });
 
 site.filter("currentYear", () => new Date().getFullYear().toString());

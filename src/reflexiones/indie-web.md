@@ -1,7 +1,7 @@
 ---
 title: "Indie Web: ser dueño de lo que publicas"
 description: "Existe un movimiento que lleva años defendiendo que tu contenido debe vivir en tu propio dominio. Se llama Indie Web, y sus principios son más relevantes que nunca."
-date: 2026-03-01
+date: 2026-02-12
 tags:
   - opinión
   - oficio

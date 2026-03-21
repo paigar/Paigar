@@ -1,7 +1,7 @@
 ---
 title: "La soledad del desarrollador freelance"
 description: "Trabajar solo tiene ventajas innegables. También tiene un coste que nadie te cuenta antes de empezar. Reflexión tras más de quince años como autónomo."
-date: 2025-11-10
+date: 2025-09-18
 tags:
   - oficio
   - opinión

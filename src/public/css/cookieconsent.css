@@ -59,6 +59,10 @@
 #cc--main {
 	z-index: 2147483647;
 	z-index: var(--cc-z-index);
+	pointer-events: none;
+}
+#cc--main * {
+	pointer-events: auto;
 }
 .cc_div *,
 .cc_div :after,

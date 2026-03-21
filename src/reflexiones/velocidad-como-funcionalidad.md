@@ -1,7 +1,7 @@
 ---
 title: "La velocidad es una funcionalidad"
 description: "Una web lenta no es una web con un problema de rendimiento. Es una web con un problema de diseño. La velocidad debería tratarse como una feature, no como una optimización posterior."
-date: 2025-08-05
+date: 2025-07-18
 tags:
   - rendimiento
   - opinión

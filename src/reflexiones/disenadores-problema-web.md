@@ -1,7 +1,7 @@
 ---
 title: "El problema de los diseñadores con la web"
 description: "Diseñar para web no es diseñar para papel. Reflexión sobre los conflictos entre diseño gráfico y realidad del navegador: responsive, accesibilidad, color y tipografía."
-date: 2025-10-28
+date: 2025-08-28
 tags:
   - diseño
   - opinión

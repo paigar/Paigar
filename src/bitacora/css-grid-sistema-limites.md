@@ -1,12 +1,12 @@
 ---
 title: "Un sistema de layout con CSS Grid y columnas nombradas"
 description: "Cómo construir un sistema de anchos de contenido flexible usando CSS Grid con líneas nombradas. El patrón que uso en todos mis proyectos."
-date: 2026-02-25
+date: 2026-02-26
 tags:
   - css
   - layout
   - técnicas
-destacado: true
+destacado: false
 ---
 
 Uno de los patrones que más uso en mis webs es un sistema de grid con columnas nombradas. Lo llamo "límites" y permite que cualquier elemento hijo defina su propio ancho sin necesidad de clases wrapper adicionales. Lo uso en este sitio, en Bilbonauta, y en casi todos los proyectos de Idenautas.

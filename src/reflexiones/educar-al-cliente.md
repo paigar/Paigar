@@ -1,7 +1,7 @@
 ---
 title: "Educar al cliente es parte del trabajo"
 description: "El cliente no tiene por qué saber de tecnología. Nuestro trabajo incluye explicar, orientar y a veces decir que no. Reflexión sobre la relación profesional en el desarrollo web."
-date: 2026-01-22
+date: 2025-12-08
 tags:
   - clientes
   - oficio

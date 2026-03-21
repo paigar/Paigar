@@ -1,7 +1,7 @@
 ---
 title: "Nunjucks como motor de plantillas: lo bueno y lo mejorable"
 description: "Mi experiencia usando Nunjucks con Eleventy tras varios años y varios proyectos. Qué me gusta, qué me frustra y qué alternativas he considerado."
-date: 2025-11-18
+date: 2025-09-15
 tags:
   - eleventy
   - nunjucks
