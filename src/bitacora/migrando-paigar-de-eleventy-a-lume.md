@@ -91,6 +91,8 @@ El sitio se ve exactamente igual. Si no lees el footer donde ahora dice "Hecho c
 
 ## El resultado
 
-El build genera 270 archivos en ~5 segundos (incluyendo la conversión de 40 imágenes OG de SVG a PNG). El proyecto no tiene ninguna dependencia de Node.js. Todo corre sobre Deno.
+El build genera 159 archivos en unos 2 segundos. Las 42 imágenes Open Graph se convierten de SVG a PNG solo cuando su contenido cambia — en builds sucesivos se sirven desde una caché local. El proyecto no tiene ninguna dependencia de Node.js. Todo corre sobre Deno.
 
-Para un sitio que predica la simplicidad y el código limpio, la arquitectura ahora es coherente con el mensaje. Y si te interesa los detalles técnicos de la migración, los he documentado en [un artículo aparte](/bitacora/migrar-eleventy-a-lume/) con los tres problemas que más tiempo me costaron resolver.
+Después de la migración aproveché para limpiar: eliminé filtros que Vento hacía innecesarios (de 12 a 5), moví la versión anterior del sitio a un subdominio propio para no arrastrar 17 MB en cada deploy, y reorganicé los assets para que solo los archivos realmente externos (cookieconsent) se copien al output — el CSS y JS funcional se incrusta inline directamente desde las plantillas.
+
+Para un sitio que predica la simplicidad y el código limpio, la arquitectura ahora es coherente con el mensaje. Y si te interesan los detalles técnicos de la migración, los he documentado en [un artículo aparte](/bitacora/migrar-eleventy-a-lume/) con los tres problemas que más tiempo me costaron resolver.

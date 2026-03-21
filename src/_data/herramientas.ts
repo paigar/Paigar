@@ -24,12 +24,12 @@ export default [
     desde: 1999,
   },
   {
-    nombre: "Nunjucks",
+    nombre: "Vento",
     categoria: "Plantillas",
     descripcion:
-      "Motor de plantillas potente y limpio. Lo uso con Lume para todos mis proyectos estáticos. La herencia de layouts es especialmente útil.",
-    url: "https://mozilla.github.io/nunjucks/",
-    desde: 2020,
+      "El motor de plantillas nativo de Lume. Sintaxis limpia con expresiones JavaScript reales, includes con datos explícitos y sin dependencias externas.",
+    url: "https://vento.js.org/",
+    desde: 2026,
   },
   {
     nombre: "Git",

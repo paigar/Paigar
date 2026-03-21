@@ -76,10 +76,12 @@
 
     {{ include "partials/pie.vto" }}
 
-    <script src="/js/theme-toggle.js" inline></script>
-    <script src="/js/externallinks.js" inline></script>
-    <script src="/js/reveal.js" inline></script>
-    <script src="/js/nav-mobile.js" inline></script>
+    <script>
+    {{ include "scripts/theme-toggle.js" }}
+    {{ include "scripts/externallinks.js" }}
+    {{ include "scripts/reveal.js" }}
+    {{ include "scripts/nav-mobile.js" }}
+    </script>
 
     <link rel="stylesheet" href="/css/cookieconsent.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="/css/cookieconsent.css"></noscript>

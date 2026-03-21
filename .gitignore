@@ -3,5 +3,6 @@ node_modules/
 package-lock.json
 deno.lock
 .cache
+.og-cache/
 .env
 .claude/

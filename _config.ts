@@ -85,37 +85,9 @@ site.filter("htmlDateString", (dateObj: Date | string) => {
   return date.toISOString().split("T")[0];
 });
 
-site.filter("ordenarPorFecha", (collection: any[]) => {
-  if (!Array.isArray(collection)) return [];
-  return [...collection].sort((a, b) => {
-    const dateA = new Date(a.date || 0);
-    const dateB = new Date(b.date || 0);
-    return dateB.getTime() - dateA.getTime();
-  });
-});
-
-site.filter("head", (array: any[], n: number) => {
-  if (!Array.isArray(array) || array.length === 0) return [];
-  if (n < 0) return array.slice(n);
-  return array.slice(0, n);
-});
-
 site.filter("filterTagList", (tags: string[]) => {
   return (tags || []).filter(
     (tag) => !["bitacora", "reflexiones"].includes(tag),
-  );
-});
-
-site.filter("destacados", (coleccion: any[]) => {
-  return (coleccion || []).filter((item) => item.destacado === true);
-});
-
-site.filter("intro", (contenido: string, numPalabras = 100) => {
-  if (typeof contenido !== "string") return "";
-  const palabras = contenido.trim().split(/\s+/);
-  return (
-    palabras.slice(0, numPalabras).join(" ") +
-    (palabras.length > numPalabras ? "..." : "")
   );
 });
 
@@ -125,13 +97,6 @@ site.filter("readingTime", (content: string) => {
   const minutes = Math.ceil(words / 200);
   return `${minutes} min`;
 });
-
-site.filter("startsWith", (str: string, prefix: string) => {
-  return str && str.startsWith(prefix);
-});
-
-site.filter("currentYear", () => new Date().getFullYear().toString());
-site.filter("currentBuildDate", () => new Date().toISOString());
 
 site.filter("slugify", (str: string) => {
   return str
@@ -184,9 +149,11 @@ site.hooks.addMarkdownItPlugin((md: any) => {
   };
 });
 
-// -- Conversión SVG → PNG para imágenes Open Graph --
+// -- Conversión SVG → PNG para imágenes Open Graph (con caché) --
 site.addEventListener("afterBuild", async () => {
   const ogDir = site.dest() + "/og-images";
+  const cacheDir = ".og-cache";
+  const cacheHashPath = `${cacheDir}/hashes.json`;
 
   try {
     const entries = [...Deno.readDirSync(ogDir)];
@@ -194,19 +161,66 @@ site.addEventListener("afterBuild", async () => {
 
     if (svgFiles.length === 0) return;
 
+    // Crear directorio de caché si no existe
+    try { Deno.mkdirSync(cacheDir); } catch { /* ya existe */ }
+
+    // Leer hashes anteriores
+    let hashes: Record<string, string> = {};
+    try {
+      hashes = JSON.parse(await Deno.readTextFile(cacheHashPath));
+    } catch { /* no existe, ok */ }
+
+    const newHashes: Record<string, string> = {};
     let converted = 0;
+    let cached = 0;
+
     for (const entry of svgFiles) {
       const svgPath = `${ogDir}/${entry.name}`;
       const pngPath = svgPath.replace(".svg", ".png");
+      const outputName = entry.name.replace(".svg", "");
+      const cachedPngPath = `${cacheDir}/${outputName}.png`;
       const svgContent = await Deno.readTextFile(svgPath);
 
-      const pngBuffer = await renderSvgToPng(svgContent);
-      await Deno.writeFile(pngPath, pngBuffer);
+      // Hash del contenido SVG
+      const hashBuffer = await crypto.subtle.digest(
+        "SHA-256",
+        new TextEncoder().encode(svgContent),
+      );
+      const hash = [...new Uint8Array(hashBuffer)]
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+
+      newHashes[outputName] = hash;
+
+      if (hashes[outputName] === hash) {
+        // SVG no ha cambiado — copiar PNG desde caché
+        try {
+          await Deno.copyFile(cachedPngPath, pngPath);
+          cached++;
+        } catch {
+          // PNG en caché no existe — reconvertir
+          const pngBuffer = await renderSvgToPng(svgContent);
+          await Deno.writeFile(pngPath, pngBuffer);
+          await Deno.copyFile(pngPath, cachedPngPath);
+          converted++;
+        }
+      } else {
+        // SVG ha cambiado — convertir y actualizar caché
+        const pngBuffer = await renderSvgToPng(svgContent);
+        await Deno.writeFile(pngPath, pngBuffer);
+        await Deno.copyFile(pngPath, cachedPngPath);
+        converted++;
+      }
+
       await Deno.remove(svgPath);
-      converted++;
     }
 
-    console.log(`[og-images] ${converted} SVG convertidos a PNG`);
+    // Guardar hashes
+    await Deno.writeTextFile(cacheHashPath, JSON.stringify(newHashes, null, 2));
+
+    console.log(
+      `[og-images] ${converted} convertida(s), ${cached} en caché`,
+    );
   } catch (err) {
     if (!(err instanceof Deno.errors.NotFound)) {
       console.error("[og-images] Error:", err);
