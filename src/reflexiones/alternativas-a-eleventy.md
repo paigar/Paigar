@@ -1,7 +1,7 @@
 ---
 title: "Cuando tu herramienta favorita cambia de rumbo"
 description: "Eleventy se convierte en Build Awesome, y los que construimos con generadores estáticos por filosofía tenemos que plantearnos qué viene después."
-date: 2026-03-05
+date: 2026-03-06
 tags:
   - opinión
   - herramientas
@@ -12,7 +12,7 @@ destacado: true
 
 El pasado 3 de marzo, Eleventy confirmó lo que muchos intuíamos desde que en septiembre de 2024 se anunciara su incorporación a Font Awesome: el generador de sitios estáticos que tantos hemos adoptado como herramienta de cabecera iba a dejar de llamarse 11ty para convertirse en Build Awesome.
 
-Y por si el nombre no fuera suficientemente desafortunado por sí solo, la campaña de Kickstarter asociada al lanzamiento — que alcanzó su objetivo de financiación en un solo día — fue cancelada apenas 48 horas después alegando problemas de entrega de correo electrónico. No es el tipo de estabilidad que inspira confianza.
+Y por si el nombre no fuera suficientemente desafortunado por sí solo, la campaña de Kickstarter asociada al lanzamiento — que alcanzó su objetivo de financiación en un solo día — acaba de ser cancelada, alegando problemas de entrega de correo electrónico. No es el tipo de estabilidad que inspira confianza.
 
 ## El patrón conocido
 
