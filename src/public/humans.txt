@@ -5,8 +5,8 @@ Contact: juanjo@paigar.es
 Location: Bilbao, Spain
 
 /* SITE */
-Last update: 2026-02-28
+Last update: 2026-03-22
 Language: Spanish
 Standards: HTML5, CSS3
-Components: Eleventy, Nunjucks, JavaScript vanilla
+Components: Lume, Vento, JavaScript vanilla
 Software: VS Code, Firefox Developer Edition
