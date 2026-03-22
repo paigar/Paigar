@@ -1,12 +1,12 @@
 export default function* ({ search }: Lume.Data) {
   const posts = [
-    ...search.pages("bitacora"),
-    ...search.pages("reflexiones"),
+    ...search.pages("type=bitacora"),
+    ...search.pages("type=reflexiones"),
   ];
 
   for (const post of posts) {
     const title = post.title as string;
-    const tags = (post.tags || []) as string[];
+    const type = post.type as string;
 
     // Partir el título en líneas de máximo 36 caracteres
     const parts = title.split(" ");
@@ -30,7 +30,7 @@ export default function* ({ search }: Lume.Data) {
     else if (lineCount === 3) titleY = 240;
     else titleY = 200;
 
-    const seccion = tags.includes("bitacora") ? "BITACORA" : "REFLEXIONES";
+    const seccion = type === "bitacora" ? "BITACORA" : "REFLEXIONES";
 
     // Extraer el slug de la URL del post
     const urlParts = (post.url as string).split("/").filter(Boolean);

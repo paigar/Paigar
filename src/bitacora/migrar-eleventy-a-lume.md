@@ -40,6 +40,10 @@ Lo desconcertante es que `search.pages()` sí devuelve resultados. Puedes verifi
 
 El título se muestra, pero el include produce una cadena vacía. El partial no puede ver `post`.
 
+### Por qué pasa esto
+
+Óscar Otero, el creador de Lume, me explicó la causa técnica. Nunjucks es por defecto un motor síncrono, pero Lume es asíncrono por naturaleza, así que utiliza Nunjucks en modo asíncrono. En ese modo, algunas etiquetas no funcionan cuando contienen código asíncrono (como un `include`) y hay que usar otras: `asyncEach` en vez de `for`, e `ifAsync` en vez de `if`. Esta es precisamente una de las razones por las que Óscar decidió crear Vento.
+
 ### La solución en Nunjucks: macros
 
 La alternativa que funciona en Lume con Nunjucks son los macros. En lugar de un partial que depende del scope del padre, defines una función que recibe los datos como argumentos:
@@ -115,9 +119,9 @@ layout: layouts/post.vto
 
 Funciona — pero con un efecto secundario. El `_data.yml` aplica a **todos** los archivos del directorio, incluyendo `index.vto`. El índice de la sección acaba con el tag `bitacora`, apareciendo en los resultados de búsqueda como si fuera un post más. El feed RSS incluye la página de índice. Las postcards muestran la sección como si fuera un artículo.
 
-### La solución: un preprocessor
+### La primera solución: un preprocessor
 
-La solución limpia es un preprocessor en `_config.ts` que solo inyecta el tag de sección en archivos Markdown, ignorando las plantillas `.vto`:
+Mi primera solución fue un preprocessor en `_config.ts` que solo inyecta el tag de sección en archivos Markdown, ignorando las plantillas `.vto`:
 
 ```typescript
 site.preprocess([".md"], (pages) => {
@@ -132,7 +136,31 @@ site.preprocess([".md"], (pages) => {
 });
 ```
 
-El filtro `[".md"]` es la clave. Solo procesa archivos Markdown, así que los `index.vto` de cada sección no reciben el tag. Es más explícito que la cascada de datos y no tiene efectos colaterales.
+El filtro `[".md"]` es la clave. Solo procesa archivos Markdown, así que los `index.vto` de cada sección no reciben el tag. Es más explícito que la cascada de datos y no tiene efectos colaterales. Funcionaba bien, pero seguía usando `tags` para algo que no es realmente una etiqueta.
+
+### La solución definitiva: separar sección de tags
+
+Óscar Otero, el creador de Lume, me comentó que `tags` debería tener `mergedKeys` activado por defecto, y que el comportamiento que encontré podría ser un bug de Lume o un error en mi implementación — era mi primera vez con Lume, así que no descarto haberme dejado algo por el camino. Pero lo más interesante fue su propuesta: en vez de usar `tags` para agrupar por sección, usar una variable propia como `type`.
+
+La idea es sencilla. En el `_data.yml` de cada sección defines el tipo:
+
+```yaml
+# bitacora/_data.yml
+layout: layouts/post.vto
+type: bitacora
+```
+
+Y en el `index.vto` de la sección lo anulas para que el índice no aparezca en las búsquedas:
+
+```yaml
+---
+type:
+---
+```
+
+Las búsquedas pasan de `search.pages("bitacora")` a `search.pages("type=bitacora")`. Los `tags` quedan libres para lo que realmente son — etiquetas de contenido como `css`, `técnicas` o `eleventy` — sin mezclarse con la agrupación por sección.
+
+Este enfoque es más limpio que el preprocessor: no necesita código en `_config.ts`, la intención queda clara en los datos, y `tags` deja de hacer doble función. Es el que uso actualmente.
 
 ## 3. El bundling de CSS y JS no existe
 
@@ -217,6 +245,6 @@ Sí. Los tres problemas se resolvieron en el mismo día, y el resultado es un pr
 - **Deno en lugar de Node** — sin `node_modules` de 200 MB, sin `package.json`, sin `package-lock.json`
 - **Vento en lugar de Nunjucks** — sintaxis más clara, datos explícitos en includes, expresiones JavaScript reales
 - **TypeScript nativo** — la configuración, los generadores y el script de publicación son `.ts`, con tipado sin transpilación
-- **Build en ~1 segundo** — 260 archivos generados, incluyendo conversión SVG→PNG de las imágenes Open Graph
+- **Build en ~2 segundos** — 159 archivos generados, incluyendo conversión SVG→PNG de las imágenes Open Graph
 
 El código fuente pasó de depender de 10 paquetes npm a cero dependencias de Node.js. Todo corre sobre Deno y las importaciones son URLs directas o paquetes de JSR. Para un sitio que predica la simplicidad, es coherente.

@@ -282,6 +282,18 @@ function escapeXml(str: string): string {
 }
 ```
 
+## La alternativa oficial: el plugin og_images
+
+Lume tiene un [plugin oficial de imágenes Open Graph](https://lume.land/plugins/og_images/) que resuelve el mismo problema. Usa Satori (de Vercel) para convertir componentes JSX en SVG, y Sharp para rasterizar a PNG. Los layouts se definen como funciones JSX con estilos inline, y se asignan desde el frontmatter con `openGraphLayout`.
+
+Es una opción válida si prefieres un enfoque más integrado con el ecosistema de Lume. En mi caso elegí la implementación manual por varias razones:
+
+- **Control total del SVG** — puedo usar cualquier elemento SVG (`<line>`, `<circle>`, `<tspan>`) sin las limitaciones de Satori, que solo soporta un subconjunto de CSS basado en flexbox.
+- **Sin Sharp** — Sharp es una librería nativa de Node.js que no funciona directamente en Deno. Con resvg-wasm no hay binarios nativos ni dependencias de plataforma.
+- **Menos dependencias** — el generador es un único archivo TypeScript de 89 líneas, sin configuración JSX ni paquetes adicionales.
+
+El plugin oficial es más cómodo si no necesitas un diseño muy específico o si ya usas JSX en tu proyecto. Pero para un sitio que busca minimizar dependencias, la solución manual encaja mejor.
+
 ## El resultado
 
 Con esta solución, cada vez que hago build se generan automáticamente las imágenes de vista previa para todos los posts. Sin intervención manual, sin servicios externos, sin imágenes que versionar en el repositorio. Solo código que genera código que genera imágenes.

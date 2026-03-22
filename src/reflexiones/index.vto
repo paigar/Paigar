@@ -3,7 +3,7 @@ layout: layouts/base.vto
 title: "Reflexiones"
 description: "Opiniones y pensamientos sobre el oficio de desarrollar para la web."
 url: /reflexiones/
-tags: []
+type:
 ---
 
 <div class="seccion-header reveal ancho">
@@ -11,7 +11,7 @@ tags: []
   <p class="seccion-header__description">Opiniones y pensamientos sobre el oficio, la industria y lo que significa construir para la web después de más de veinte años.</p>
 </div>
 
-{{ set posts = search.pages("reflexiones", "date=desc") }}
+{{ set posts = search.pages("type=reflexiones", "date=desc") }}
 {{ set destacado = posts.find(p => p.destacado) }}
 
 {{ if destacado }}

@@ -63,8 +63,8 @@ pageCss:
     <span class="home-section__marker">//</span> Últimas entradas
   </h2>
 
-  {{ set bitacoraEntries = search.pages("bitacora", "date=desc").slice(0, 3) }}
-  {{ set reflexionesEntries = search.pages("reflexiones", "date=desc").slice(0, 3) }}
+  {{ set bitacoraEntries = search.pages("type=bitacora", "date=desc").slice(0, 3) }}
+  {{ set reflexionesEntries = search.pages("type=reflexiones", "date=desc").slice(0, 3) }}
   {{ set allEntries = [...bitacoraEntries, ...reflexionesEntries].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 4) }}
 
   {{ if allEntries.length > 0 }}

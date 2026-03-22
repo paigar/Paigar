@@ -23,12 +23,12 @@ pageCss:
   {{ content }}
 </article>
 
-{{ if tags?.includes("bitacora") }}
-  {{ set sectionPosts = search.pages("bitacora", "date=asc") }}
+{{ if type === "bitacora" }}
+  {{ set sectionPosts = search.pages("type=bitacora", "date=asc") }}
   {{ set sectionUrl = "/bitacora/" }}
   {{ set sectionName = "la bitácora" }}
-{{ else if tags?.includes("reflexiones") }}
-  {{ set sectionPosts = search.pages("reflexiones", "date=asc") }}
+{{ else if type === "reflexiones" }}
+  {{ set sectionPosts = search.pages("type=reflexiones", "date=asc") }}
   {{ set sectionUrl = "/reflexiones/" }}
   {{ set sectionName = "reflexiones" }}
 {{ /if }}

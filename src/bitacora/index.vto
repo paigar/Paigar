@@ -3,7 +3,7 @@ layout: layouts/base.vto
 title: "Bitácora"
 description: "Proyectos, experimentos y descubrimientos técnicos."
 url: /bitacora/
-tags: []
+type:
 ---
 
 <div class="seccion-header reveal ancho">
@@ -11,7 +11,7 @@ tags: []
   <p class="seccion-header__description">Proyectos, experimentos y descubrimientos técnicos. Lo que construyo y lo que aprendo por el camino.</p>
 </div>
 
-{{ set posts = search.pages("bitacora", "date=desc") }}
+{{ set posts = search.pages("type=bitacora", "date=desc") }}
 {{ set destacado = posts.find(p => p.destacado) }}
 
 {{ if destacado }}

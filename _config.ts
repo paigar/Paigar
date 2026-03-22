@@ -34,7 +34,7 @@ site.hooks.addMarkdownItPlugin(markdownItAnchor, {
 // Feed (RSS + JSON Feed)
 site.use(feed({
   output: ["/feed/feed.xml", "/feed/feed.json"],
-  query: "bitacora",
+  query: "type=bitacora",
   sort: "date=desc",
   limit: 20,
   info: {
@@ -51,18 +51,6 @@ site.use(feed({
     content: "=children",
   },
 }));
-
-// -- Preprocessor: añadir tag de sección a posts markdown --
-site.preprocess([".md"], (pages) => {
-  for (const page of pages) {
-    const path = page.src.path;
-    if (path.startsWith("/bitacora/")) {
-      page.data.tags = [...(page.data.tags || []), "bitacora"];
-    } else if (path.startsWith("/reflexiones/")) {
-      page.data.tags = [...(page.data.tags || []), "reflexiones"];
-    }
-  }
-});
 
 // -- Static files --
 site.copy("public", ".");
@@ -86,9 +74,7 @@ site.filter("htmlDateString", (dateObj: Date | string) => {
 });
 
 site.filter("filterTagList", (tags: string[]) => {
-  return (tags || []).filter(
-    (tag) => !["bitacora", "reflexiones"].includes(tag),
-  );
+  return (tags || []);
 });
 
 site.filter("readingTime", (content: string) => {
