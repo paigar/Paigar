@@ -6,7 +6,7 @@ tags:
   - lume
   - eleventy
   - técnicas
-destacado: true
+destacado: false
 ---
 
 Migrar un sitio estático de un generador a otro parece sencillo sobre el papel. Ambos procesan plantillas, ambos generan HTML, la estructura es parecida. Y en gran parte es así: el contenido Markdown no cambia, el CSS sigue siendo CSS, y el JavaScript vanilla funciona igual.

@@ -16,6 +16,7 @@ const site = lume({
 // -- Plugins (Vento es el motor de plantillas por defecto en Lume) --
 site.use(slugifyUrls());
 site.use(postcss());
+site.add([".css"]);
 site.use(inline());
 site.use(sitemap());
 site.use(minifyHTML());

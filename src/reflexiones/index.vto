@@ -12,7 +12,7 @@ type:
 </div>
 
 {{ set posts = search.pages("type=reflexiones", "date=desc") }}
-{{ set destacado = posts.find(p => p.destacado) }}
+{{ set destacado = posts.find(p => p.destacado) || posts[0] }}
 
 {{ if destacado }}
   {{ set post = destacado }}

@@ -7,7 +7,7 @@ tags:
   - herramientas
   - oficio
   - lume
-destacado: true
+destacado: false
 ---
 
 El pasado 3 de marzo, Eleventy confirmó lo que muchos intuíamos desde que en septiembre de 2024 se anunciara su incorporación a Font Awesome: el generador de sitios estáticos que tantos hemos adoptado como herramienta de cabecera iba a dejar de llamarse 11ty para convertirse en Build Awesome.
